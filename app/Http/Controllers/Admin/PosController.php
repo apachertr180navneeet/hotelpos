@@ -1592,43 +1592,8 @@ class PosController extends Controller {
                             }
                         }
                     }
-                    $orderProduct = DB::table('order_product')->where('orderId', $cart['orderId'])->where('productId', $cart['productId'])->first();
                     
-                    if($orderProduct){
-                        $qty = $orderProduct->quantity - $cart['orderId'];
-                        if($qty != 0){
-                            DB::table('order_product')->insert([
-                                'orderId' => $cart['orderId'],
-                                'productId' => $cart['productId'],
-                                'heading' => $cart['heading'],
-                                'model' => $cart['model'],
-                                'barcode' => $cart['barcode'],
-                                'barcodeType' => $cart['barcodeType'],
-                                'taxId' => $cart['taxId'],
-                                'taxType' => $cart['taxType'],
-                                'taxHeading' => $cart['taxHeading'],
-                                'taxHeading' => $cart['taxHeading'],
-                                'taxPercent' => $cart['taxPercent'],
-                                'tax' => $cart['tax'],
-                                'quantity' => $qty,
-                                'discount' => $cart['discount'],
-                                'discountValue' => $cart['discountValue'],
-                                'rewardPoints' => $cart['rewardPoints'],
-                                'cost' => $cart['cost'],
-                                'price' => $cart['price'],
-                                'percent' => $cart['percent'],
-                                'total' => $cart['total'],
-                                'profit' => $cart['profit'],
-                                'rewardPoints' => $cart['rewardPoints'],
-                                'sentToKot' => $cart['sentToKot'],
-                                'kotViewed' => $cart['kotViewed'],
-                                'kotToken' => $cart['kotToken'],
-                                'kotViewedBy' => $cart['kotViewedBy'],
-                            ]);
-                        }
-                    }else{
-                        Functions::setData("order_product", $cart);
-                    }
+                    Functions::setData("order_product", $cart);
                     //DB::select("UPDATE products SET quantity = quantity - '".$cart['quantity']."' WHERE productId='".$cart['productId']."'");
                 }
                 foreach (Session::get("posCart") as $cart) {
