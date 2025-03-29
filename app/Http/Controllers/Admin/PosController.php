@@ -1154,9 +1154,14 @@ class PosController extends Controller {
         }
         if ($enableRewardPoints == 1) {
 
-            if($settings['rewardPointsOnCredit'] == 0 AND ($globalSettings['creditPaymentMethod'] == Session::get("paymentId")['paymentId'])){
+            $paymentSession = Session::get("paymentId");
+
+            if ($settings['rewardPointsOnCredit'] == 0 && 
+                isset($paymentSession['paymentId']) && 
+                $globalSettings['creditPaymentMethod'] == $paymentSession['paymentId']) {
+                
                 $cartTotalArray['rewardPoints'] = 0;
-            }else{
+            } else {
                 $html .= '<tr>';
                 $html .= '<td width="70%" class="prtduitanr">' . PosController::message("Reward Point Earned") . '</td>';
                 $html .= '<td style="vertical-align:top;text-align:right;" class="rgicmfwsdb akbmamllxh">' . $cartTotalArray['rewardPoints'] . '</td>';

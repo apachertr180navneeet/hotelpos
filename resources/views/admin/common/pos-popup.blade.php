@@ -169,27 +169,27 @@
                <div class="row ewhwqdukhc">
                   <div class="col-md-6">
                      <label style="margin-top:10px;margin-bottom:5px;font-size:12px;">Check In Date</label>
-                     <input type="date" class="form-control mjyozxoavc" name="dateCheckIn" value="{{ (Session::get('hotelRoom')!='')?Session::get('hotelRoom')['post']['dateCheckIn']:date('Y-m-d')}}">
+                     <input type="date" class="form-control mjyozxoavc" name="dateCheckIn" value="{{ (Session::get('hotelRoom')!='')?Session::get('hotelRoom')['dateCheckIn']:date('Y-m-d')}}">
                   </div>
                   <div class="col-md-6">
                      <label style="margin-top:10px;margin-bottom:5px;font-size:12px;">Check Out Date</label>
-                     <input type="date" readonly class="form-control bmehnirpbl" name="dateCheckOut" value="{{ (Session::get('hotelRoom')!='')?Session::get('hotelRoom')['post']['dateCheckOut']:''}}">
+                     <input type="date" readonly class="form-control bmehnirpbl" name="dateCheckOut" value="{{ (Session::get('hotelRoom')!='')?Session::get('hotelRoom')['dateCheckOut']:''}}">
                   </div>
                </div>
                <div class="row ewhwqdukhc">
                   <div class="col-md-6">
                      <label style="margin-top:10px;margin-bottom:5px;font-size:12px;">Check In Time</label>
-                     <input type="time" class="form-control uodrmvyjkh" name="timeCheckIn" value="{{ (Session::get('hotelRoom')!='')?Session::get('hotelRoom')['post']['timeCheckIn']:date('H:i')}}">
+                     <input type="time" class="form-control uodrmvyjkh" name="timeCheckIn" value="{{ (Session::get('hotelRoom')!='')?Session::get('hotelRoom')['timeCheckIn']:date('H:i')}}">
                   </div>
                   <div class="col-md-6">
                      <label style="margin-top:10px;margin-bottom:5px;font-size:12px;">Check Out Time</label>
-                     <input type="time" readonly class="form-control ixojsjdgxu" name="timeCheckOut" value="{{ (Session::get('hotelRoom')!='')?Session::get('hotelRoom')['post']['timeCheckOut']:''}}">
+                     <input type="time" readonly class="form-control ixojsjdgxu" name="timeCheckOut" value="{{ (Session::get('hotelRoom')!='')?Session::get('hotelRoom')['timeCheckOut']:''}}">
                      <div class="btn btn-primary ipauryfora" style="margin-top: 10px;float: right;">Check Out</div>
                   </div>
                </div>
                @if(Session::get('hotelRoom')!='')
-               @php($jsonPersonName = Session::get('hotelRoom')['post']['personName'])
-               @php($jsonPersonId = Session::get('hotelRoom')['post']['personId'])
+               @php($jsonPersonName = Session::get('hotelRoom')['personName'])
+               @php($jsonPersonId = Session::get('hotelRoom')['personId'])
                @php($a = 1)
                @if(count($jsonPersonName) > 0)
                @for($i=0;$i<count($jsonPersonName);$i++)

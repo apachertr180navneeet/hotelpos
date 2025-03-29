@@ -20,7 +20,7 @@
          --darkGreen: #098221;
          }
          .symbol::before {
-           content: "{{$controller::getCurrencySymbol()}}";
+           content: "₹";
            display: inline-block;
            margin-right: 2px;
          }
@@ -92,10 +92,10 @@
                         @if($BookedRoom == TRUE)
                            <div style="width: 100%;padding: 5px;background: #ccc;color: white;margin-bottom: 5px;cursor: pointer;">{{$room['heading']}}</div>
                         @else
-                           <div class="inrqwlsqvg{{ (Session::get("hotelRoom")!="" && Session::get("hotelRoom")['post']['productId']==$room['productId'])?' fspqembzib':'' }}" data-id="{{$room['productId']}}">{{$room['heading']}}</div>
+                           <div class="inrqwlsqvg{{ (Session::get("hotelRoom")!="" && Session::get("hotelRoom")['productId']==$room['productId'])?' fspqembzib':'' }}" data-id="{{$room['productId']}}">{{$room['heading']}}</div>
                         @endif
                      @else
-                        <div class="inrqwlsqvg{{ (Session::get("hotelRoom")!="" && Session::get("hotelRoom")['post']['productId']==$room['productId'])?' fspqembzib':'' }}" data-id="{{$room['productId']}}">{{$room['heading']}}</div>
+                        <div class="inrqwlsqvg{{ (Session::get("hotelRoom")!="" && Session::get("hotelRoom")['productId']==$room['productId'])?' fspqembzib':'' }}" data-id="{{$room['productId']}}">{{$room['heading']}}</div>
                      @endif
                   @endforeach
                   <!-- <div class="fxexbqdlol" style="width: 100%;padding: 5px;background: #ccc;color: white;margin-bottom: 5px;cursor: pointer;" data-id="0">{{$controller::message("No Room")}}</div> -->
