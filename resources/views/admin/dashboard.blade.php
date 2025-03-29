@@ -87,7 +87,43 @@
                </div>
             </div>
          </div>
-    
+         <h3 style="margin-left: 2%; margin-bottom: 1%;">Table List</h3>
+         <div class="col-sm-12 col-xl-12 col-lg-12">
+            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+               <!-- Tables 1 to 12 -->
+               <?php for ($i = 1; $i <= 12; $i++): ?>
+                   <div class="card o-hidden" style="margin-left: 1%; height: 60%; width: 8%;">
+                       <div class="card-body">
+                           <div class="media static-widget">
+                               <div class="media-body">
+                                   <h6 class="font-roboto" style="text-align: center;font-size: large;font-weight: bolder;"><?= $i ?></h6>
+                                   <h4 class="mb-0 counter symbol" style="text-align: center;">1500</h4>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               <?php endfor; ?>
+           </div>           
+         </div>
+
+         <h3 style="margin-left: 2%; margin-bottom: 1%;">Room List</h3>
+         <div class="col-sm-12 col-xl-12 col-lg-12">
+            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+               <!-- Tables 1 to 12 -->
+               <?php for ($i = 1; $i <= 15; $i++): ?>
+                   <div class="card o-hidden" style="margin-left: 1%; height: 60%; width: 8%;">
+                       <div class="card-body">
+                           <div class="media static-widget">
+                               <div class="media-body">
+                                   <h6 class="font-roboto" style="text-align: center;font-size: large;font-weight: bolder;"><?= $i ?></h6>
+                                   <h4 class="mb-0 counter symbol" style="text-align: center;">1500</h4>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               <?php endfor; ?>
+           </div>           
+         </div>
       </div>
    </div>
    <div class="container-fluid list-products">

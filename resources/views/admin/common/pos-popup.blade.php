@@ -187,6 +187,10 @@
                      <div class="btn btn-primary ipauryfora" style="margin-top: 10px;float: right;">Check Out</div>
                   </div>
                </div>
+               @php
+                  $hotelrom = Session::get('hotelRoom');
+                  //print_r($hotelrom);
+               @endphp
                @if(Session::get('hotelRoom')!='')
                @php($jsonPersonName = Session::get('hotelRoom')['personName'])
                @php($jsonPersonId = Session::get('hotelRoom')['personId'])

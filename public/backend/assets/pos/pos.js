@@ -357,6 +357,8 @@ $(document).on('click', '.mjhnxodsgc', function() {
     var json = $(this).attr("data-json");
     var page = $(this).attr("data-page");
     json = $.parseJSON(json);
+    console.log(json);
+    
     var productId = json.productId;
     var error = 0;
     if (orderTypeRequired == 1) {

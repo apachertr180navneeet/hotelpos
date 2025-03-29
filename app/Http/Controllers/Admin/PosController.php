@@ -1489,7 +1489,7 @@ class PosController extends Controller {
             // if ((Session::get('updateId') == '' || Session::get('updateId') == 0) and isset($hotelRoom)) {
             //     $arrayOrder['hotelToken'] = $hotelRoom['hotelToken'];
             // }
-            if ($hotelRoom['post']['dateCheckOut'] != '' and $hotelRoom['post']['timeCheckOut'] != '') {
+            if ($hotelRoom['dateCheckOut'] != '' and $hotelRoom['timeCheckOut'] != '') {
                 $arrayOrder['hold'] = 0;
                 $arrayOrder['checkoutType'] = 'finalCheckout';
             }
@@ -1959,6 +1959,8 @@ class PosController extends Controller {
                 'hotelToken' => $hotelToken,
             ];
 
+            
+
             $personImages = [];
             foreach ($request->input('personName', []) as $key => $value) {
                 try {
@@ -1981,6 +1983,7 @@ class PosController extends Controller {
             Session::put("hotelRoom", array_merge($request->all(), ['hotelToken' => $hotelToken, 'personId' => $personImages]));
 
             $existingRecord = DB::table('order_hotel_room')->where('hotelToken', $hotelToken)->exists();
+            
 
             if ($existingRecord) {
                 DB::table('order_hotel_room')->where('hotelToken', $hotelToken)->update($dataInsert);

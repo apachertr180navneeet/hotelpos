@@ -39,7 +39,7 @@
       <script src="{{url('backend/assets/ckeditor/ckeditor.js')}}"></script>
       <style type="text/css">
          .symbol::before {
-         content: "{{$controller::getCurrencySymbol()}}";
+         content: "";
          display: inline-block;
          margin-right: 2px;
          }
