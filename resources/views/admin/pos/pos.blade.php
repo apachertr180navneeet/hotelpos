@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
    <head>
@@ -79,24 +80,32 @@
                      @php($BookedRoom = FALSE)  
 
                      @if(in_array($room['productId'],$hotelBooked))
-                        
                         @php($BookedHotelRoom = $controller::getDataWhere("order","hold",1))
-                        
                         @foreach($BookedHotelRoom as $BookedRoom)
-                           @php($orderDetail = json_decode($BookedRoom['orderProduct'], true))
-                           @if($orderDetail[0]['productId'] == $room['productId'])
-                              @php($BookedRoom = TRUE)  
-                           @endif
+                              @php($orderDetail = json_decode($BookedRoom['orderProduct'], true))
+                              @if(isset($orderDetail[0]['productId']) && $orderDetail[0]['productId'] == $room['productId'])
+                                 @php($BookedRoom = TRUE)  
+                              @endif
                         @endforeach
 
                         @if($BookedRoom == TRUE)
-                           <div style="width: 100%;padding: 5px;background: #ccc;color: white;margin-bottom: 5px;cursor: pointer;">{{$room['heading']}}</div>
+                              <div style="width: 100%;padding: 5px;background: #ccc;color: white;margin-bottom: 5px;cursor: pointer;">
+                                 {{$room['heading']}}
+                              </div>
                         @else
-                           <div class="inrqwlsqvg{{ (Session::get("hotelRoom")!="" && Session::get("hotelRoom")['productId']==$room['productId'])?' fspqembzib':'' }}" data-id="{{$room['productId']}}">{{$room['heading']}}</div>
+                              <div class="inrqwlsqvg{{ (Session::has('hotelRoom') && isset(Session::get('hotelRoom')['post']) && Session::get('hotelRoom')['post']['productId'] == $room['productId']) ? ' fspqembzib' : '' }}" 
+                                 data-id="{{$room['productId']}}">
+                                 {{$room['heading']}}
+                              </div>
                         @endif
+
                      @else
-                        <div class="inrqwlsqvg{{ (Session::get("hotelRoom")!="" && Session::get("hotelRoom")['productId']==$room['productId'])?' fspqembzib':'' }}" data-id="{{$room['productId']}}">{{$room['heading']}}</div>
+                        <div class="inrqwlsqvg{{ (Session::has('hotelRoom') && isset(Session::get('hotelRoom')['post']) && Session::get('hotelRoom')['post']['productId'] == $room['productId']) ? ' fspqembzib' : '' }}" 
+                              data-id="{{$room['productId']}}">
+                              {{$room['heading']}}
+                        </div>
                      @endif
+
                   @endforeach
                   <!-- <div class="fxexbqdlol" style="width: 100%;padding: 5px;background: #ccc;color: white;margin-bottom: 5px;cursor: pointer;" data-id="0">{{$controller::message("No Room")}}</div> -->
                   @endif

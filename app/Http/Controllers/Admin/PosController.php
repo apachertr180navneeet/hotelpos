@@ -1324,7 +1324,7 @@ class PosController extends Controller {
         Session::put("additionalCharges", json_decode($order[0]['additionalCharges'], true));
         Session::put("cartGlobalDiscount", json_decode($order[0]['globalDiscount'], true));
            
-        if ($order[0]['hotel'] == 1) {
+        if ($order[0]['hotel'] == 0) {
             
             
             $hotelData = Functions::getDataWhere("order_hotel_room", "orderId", $_POST['orderId']) [0];
@@ -1483,17 +1483,12 @@ class PosController extends Controller {
             $previousValues = Functions::getDataWhere("order", "orderId", Session::get("updateId")) [0];
         }
         if (isset($hotelRoom)) {
-            // $arrayOrder['hotel'] = 1;
-            // $arrayOrder['hold'] = 1;
-            // $arrayOrder['checkoutType'] = 'hold';
-            // if ((Session::get('updateId') == '' || Session::get('updateId') == 0) and isset($hotelRoom)) {
-            //     $arrayOrder['hotelToken'] = $hotelRoom['hotelToken'];
-            // }
-            if ($hotelRoom['dateCheckOut'] != '' and $hotelRoom['timeCheckOut'] != '') {
+            if (isset($hotelRoom['dateCheckOut']) && isset($hotelRoom['timeCheckOut']) && $hotelRoom['dateCheckOut'] != '' && $hotelRoom['timeCheckOut'] != '') {
                 $arrayOrder['hold'] = 0;
                 $arrayOrder['checkoutType'] = 'finalCheckout';
             }
         }
+        
         $orderData = Functions::setData("order", $arrayOrder);
         if ((Session::get('updateId') == '' || Session::get('updateId') == 0)) {
               $orderHistory['orderStatusId'] = $arrayOrder['orderStatusId'];

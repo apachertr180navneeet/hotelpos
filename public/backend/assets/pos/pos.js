@@ -1801,6 +1801,7 @@ $(document).ready(function () {
 
                         $('.inrqwlsqvg[data-id="' + id + '"]').addClass("phjmxgubwz");
                         totalCart();
+                        location.reload();
                     } else {
                         $(context).html(html);
                         toast("error", data.message);
