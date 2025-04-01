@@ -277,22 +277,54 @@ $(document).on('keyup', '.iurrzhfiti,.wudhonlgmp', function() {
         $(".wudhonlgmp").css("border", "1px solid #ced4da");
     }
 });
-$(document).on('change', '.voptyhycaj', function() {
-    var categoryId = $(this).val();
-    $(".nknmyxjszh").show();
+// $(document).on('change', '.voptyhycaj', function() {
+//     var categoryId = $(this).val();
+//     $(".nknmyxjszh").show();
+//     $.ajax({
+//         type: 'POST',
+//         url: baseUrl + "/admin/set-category-pos",
+//         data: "categoryId=" + categoryId + "&_token=" + token,
+//         success: function(data) {
+//             $(".lzyoqmylwh").load(location.href + " .lzyoqmylwh", function() {
+//                 $(".nknmyxjszh").hide();
+//             });
+//         },
+//         error: function(data) {}
+//     });
+//     return false;
+// });
+
+function setCategory(button) {
+    var categoryId = $(button).data('id'); // Get category ID from data-id attribute
+
+    // Change button color to red and reset others back to primary
+    $(".flexDiv button").removeClass("btn-danger").addClass("btn-primary"); // Reset all buttons
+    $(button).removeClass("btn-primary").addClass("btn-danger"); // Change clicked button to danger
+
+    $(".nknmyxjszh").show(); // Show loader
+
     $.ajax({
         type: 'POST',
         url: baseUrl + "/admin/set-category-pos",
-        data: "categoryId=" + categoryId + "&_token=" + token,
+        data: {
+            categoryId: categoryId,
+            _token: token
+        },
         success: function(data) {
             $(".lzyoqmylwh").load(location.href + " .lzyoqmylwh", function() {
-                $(".nknmyxjszh").hide();
+                $(".nknmyxjszh").hide(); // Hide loader after content reloads
             });
         },
-        error: function(data) {}
+        error: function(xhr, status, error) {
+            console.error("Error:", error);
+            $(".nknmyxjszh").hide(); // Hide loader in case of error
+        }
     });
+
     return false;
-});
+}
+
+
 $(document).on('change', '.ueekytclsn', function() {
     var manufacturerId = $(this).val();
     $(".nknmyxjszh").show();

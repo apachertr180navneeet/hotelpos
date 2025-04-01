@@ -1305,6 +1305,8 @@ class PosController extends Controller {
     }
     public static function setOrderIdEdit() {
         $order = Functions::getDataWhere("order", "orderId", $_POST['orderId']);
+        
+        
         Session::forget("posCustomer");
         Session::forget("seatingTableId");
         Session::forget("multiple");
@@ -1324,37 +1326,39 @@ class PosController extends Controller {
         Session::put("additionalCharges", json_decode($order[0]['additionalCharges'], true));
         Session::put("cartGlobalDiscount", json_decode($order[0]['globalDiscount'], true));
            
-        if ($order[0]['hotel'] == 0) {
+        if ($order[0]['hotel'] == 1) {
             
             
-            $hotelData = Functions::getDataWhere("order_hotel_room", "orderId", $_POST['orderId']) [0];
-            $hotel = Functions::getDataWhere("products", "productId", $hotelData['productId']) [0];
-            $customerData = json_decode($hotelData['customerData'], true);
+            $hotelData = Functions::getDataWhere("order_hotel_room", "orderId", $_POST['orderId']);
+            $hotel = Functions::getDataWhere("products", "productId", $hotelData[0]['productId']);
+            $customerData = json_decode($hotelData['0']['customerData'], true);
 
             $data = Session::get("hotelRoom");
-            $dataNew['post']['productId'] = $hotelData['productId'];
-            $dataNew['post']['dateCheckIn'] = $hotelData['dateCheckIn'];
-            $dataNew['post']['dateCheckOut'] = $hotelData['dateCheckOut'];
-            $dataNew['post']['timeCheckIn'] = $hotelData['timeCheckIn'];
-            $dataNew['post']['timeCheckOut'] = $hotelData['timeCheckOut'];
-            $dataNew['post']['personName'] = $customerData['personName'];
-            $dataNew['post']['personId'] = $customerData['personId'];
-            $dataNew['hotel'] = $hotel;
-            $dataNew['hotelToken'] = $hotelData['hotelToken'];
+            $dataNew['productId'] = $hotelData['0']['productId'];
+            $dataNew['dateCheckIn'] = $hotelData['0']['dateCheckIn'];
+            $dataNew['dateCheckOut'] = $hotelData['0']['dateCheckOut'];
+            $dataNew['timeCheckIn'] = $hotelData['0']['timeCheckIn'];
+            $dataNew['timeCheckOut'] = $hotelData['0']['timeCheckOut'];
+            $dataNew['personName'] = $customerData['personName'];
             $dataNew['personId'] = $customerData['personId'];
+            $dataNew['hotel'] = $hotel;
+            $dataNew['hotelToken'] = $hotelData['0']['hotelToken'];
             Session::put("hotelRoom", $dataNew);
         }
     }
     
     public static function checkout() {
-
+        $arrayOrder['hotel'] = 1;
         $settings = PosController::settings();
         if ($settings['enableHotelRoomMode'] == 1) {
             if (Session::get("hotelRoom") != '') {
                 $hotelRoom = Session::get("hotelRoom");
+                $arrayOrder['hotel'] = 1;
+
             }
         }
-        //print_r($hotelRoom);
+        // print_r($hotelRoom);
+        // die;
         $totalOrderCount = DB::select("SELECT COUNT(*) AS total FROm `order`");
         $totalOrderCount = Functions::arrayConvert($totalOrderCount);
         if ($settings['maxBills'] > 0 and $settings['maxBills'] <= $totalOrderCount[0]['total']) {

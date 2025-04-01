@@ -151,94 +151,94 @@
    </div>
 </div>
 <div id="hotelRoomPopup" class="modal fade" data-keyboard="false" data-backdrop="static" role="dialog">
+   
    <div class="modal-dialog modal-xl">
       <div class="modal-content">
          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">{{ $controller::message("Hotel Room") }}</h4>
+            <button type="button" class="ohfsnpyslb" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">{{$controller::message("Hotel Room")}}</h4>
          </div>
-
-         <form id="hotelRoomForm" enctype="multipart/form-data">
-            <div class="modal-body">
-               @php
-                  $hotelRoom = Session::get('hotelRoom', []);
-                  //print_r($hotelRoom['post']);
-                  if (isset($hotelRoom['post'])) {
-                     $personNames = $hotelRoom['post']['personName'] ?? [];
-                     $personIds = $hotelRoom['post']['personId'] ?? [];
-                     $checkin = $hotelRoom['post']['dateCheckIn'] ?? date('Y-m-d');
-                     $productId = $hotelRoom['post']['productId'] ?? null; // Add null as a fallback
-                 } else {
-                     $personNames = $hotelRoom['personName'] ?? [];
-                     $personIds = $hotelRoom['personId'] ?? [];
-                     $checkin = $hotelRoom['dateCheckIn'] ?? date('Y-m-d');
-                     $productId = $hotelRoom['productId'] ?? '2'; // Add null as a fallback
-                 }
-                 
-               @endphp
-
-               <input type="hidden" name="productId" value="{{ $productId ?? '' }}">
-
-               <div class="row">
+         <form id="hotelRoomForm" enctype='multipart/form-data'>
+            <div class="modal-body rihsazkopq">
+               <input type="hidden" name="productId" class="wimdghlgbo">
+               <div class="row ewhwqdukhc">
                   <div class="col-md-6">
                      <label>Check In Date</label>
-                     <input type="date" class="form-control" name="dateCheckIn" value="{{ $checkin }}">
+                     <input type="date" class="form-control mjyozxoavc" name="dateCheckIn" 
+                        value="{{ Session::get('hotelRoom')['dateCheckIn'] ?? date('Y-m-d') }}">
                   </div>
                   <div class="col-md-6">
                      <label>Check Out Date</label>
-                     <input ttype="date" readonly class="form-control bmehnirpbl" name="dateCheckOut" name="dateCheckOut" value="{{ $hotelRoom['dateCheckOut'] ?? '' }}">
+                     <input type="date" readonly class="form-control bmehnirpbl" name="dateCheckOut" 
+                        value="{{ Session::get('hotelRoom')['dateCheckOut'] ?? '' }}">
                   </div>
                </div>
-
-               <div class="row">
+               <div class="row ewhwqdukhc">
                   <div class="col-md-6">
                      <label>Check In Time</label>
-                     <input type="time" class="form-control" name="timeCheckIn" value="{{ $hotelRoom['timeCheckIn'] ?? date('H:i') }}">
+                     <input type="time" class="form-control uodrmvyjkh" name="timeCheckIn" 
+                        value="{{ Session::get('hotelRoom')['timeCheckIn'] ?? date('H:i') }}">
                   </div>
                   <div class="col-md-6">
                      <label>Check Out Time</label>
-                     <input type="time" readonly class="form-control ixojsjdgxu" name="timeCheckOut" name="timeCheckOut" value="{{ $hotelRoom['timeCheckOut'] ?? '' }}">
+                     <input type="time" readonly class="form-control ixojsjdgxu" name="timeCheckOut" 
+                        value="{{ Session::get('hotelRoom')['timeCheckOut'] ?? '' }}">
                      <div class="btn btn-primary ipauryfora" style="margin-top: 10px;float: right;">Check Out</div>
                   </div>
                </div>
-
-               {{-- Persons List --}}
-               @php 
-                  $personNames = is_array($personNames) ? $personNames : [];
-                  $count = count($personNames) > 0 ? count($personNames) : 1;
+               @php
+                   $hotelRoom = Session::get('hotelRoom');
+                   $jsonPersonName = isset($hotelRoom['personName']) && is_array($hotelRoom['personName']) ? $hotelRoom['personName'] : [];
+                   $jsonPersonId = isset($hotelRoom['personId']) && is_array($hotelRoom['personId']) ? $hotelRoom['personId'] : [];
                @endphp
-
-
-               @for ($i = 0; $i < $count; $i++)
-               <div class="row mt-3">
+               
+               @if(!empty($jsonPersonName))
+                  @foreach($jsonPersonName as $i => $name)
+                  <div class="row pgllwrffif">
+                     <div class="col-md-5">
+                        <label>Person <span class="uculleyxsr">{{ $i + 1 }}</span></label>
+                        <input type="text" class="form-control" name="personName[{{$i}}]" value="{{ $name }}">
+                     </div>
+                     <div class="col-md-5">
+                        <label>ID <span class="difulkxnxi">{{ $i + 1 }}</span></label>
+                        <input type="file" class="form-control" name="personId[{{$i}}]">
+                        @if(!empty($jsonPersonId[$i]))
+                        <div class="lmewsgjooz">
+                           <img src="{{$controller::image($jsonPersonId[$i])}}" class="xjnassalrt" style="width:120px;height:75px;margin-top:10px;">
+                           <input type="hidden" name="personIdSaved[{{$i}}]" value="{{ $jsonPersonId[$i] }}">
+                        </div>
+                        @endif
+                     </div>
+                     <div class="col-md-2">
+                        <label>&nbsp;</label>
+                        @if($i == 0)
+                        <div class="btn btn-primary zzimskzjbd" style="width:100%">+</div>
+                        @else
+                        <div class="btn btn-warning iogimlsqtl" style="width:100%">-</div>
+                        @endif
+                     </div>
+                  </div>
+                  @endforeach
+               @else
+               <div class="row pgllwrffif">
                   <div class="col-md-5">
-                     <label>Person {{ $i + 1 }}</label>
-                     <input type="text" class="form-control" name="personName[{{ $i }}]" value="{{ $personNames[$i] ?? '' }}">
+                     <label>Person <span class="uculleyxsr">1</span></label>
+                     <input type="text" class="form-control" name="personName[0]">
                   </div>
                   <div class="col-md-5">
-                     <label>ID {{ $i + 1 }}</label>
-                     <input type="file" class="form-control" name="personId[{{ $i }}]" value="{{ $personIds[$i] ?? '' }}">
-                     
-                     @if (!empty($personIds[$i]))
-                        <div class="mt-2">
-                           <img src="{{ $controller::image($personIds[$i]) }}" style="width:120px;height:75px;">
-                           <input type="hidden" name="personIdSaved[{{ $i }}]" value="{{ $personIds[$i] }}">
-                        </div>
-                     @endif
+                     <label>ID <span class="difulkxnxi">1</span></label>
+                     <input type="file" class="form-control" name="personId[0]">
+                     <div class="lmewsgjooz"></div>
                   </div>
                   <div class="col-md-2">
-                     @if ($i == 0)
-                        <button type="button" class="btn btn-primary addPerson" style="width:100%">+</button>
-                     @else
-                        <button type="button" class="btn btn-danger removePerson" style="width:100%">-</button>
-                     @endif
+                     <label>&nbsp;</label>
+                     <div class="btn btn-primary zzimskzjbd" style="width:100%">+</div>
                   </div>
                </div>
-               @endfor
+               @endif
             </div>
-
             <div class="modal-footer">
-               <button type="submit" class="btn btn-primary">{{ $controller::message("Attach Details") }}</button>
+               <button type="submit" class="btn btn-primary">{{$controller::message("Attach Details")}}</button>
             </div>
          </form>
       </div>

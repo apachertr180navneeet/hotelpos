@@ -126,11 +126,15 @@
          @else
          <style>
              .nrwhjuikke{
-                 width:37%;
+                 width:100%;
              }
              .foqoajrkvg{
                  width:36%;
              }
+             .iewyzzfhun .wuawubiaxe {
+               width: 100%;
+               margin: 0px;
+           }
          </style>
          
          @endif
@@ -140,31 +144,22 @@
                   <input type="text" class="form-control pnaekqlgpu" placeholder="Search Product" data-page="pos">
                </div>
                <div class="flexContainer">
-                  @if($showCategories == 1)
-                  <div class="flexDiv {{ ($showManufacturers==0)?'wuawubiaxe':'iewyzzfhun' }}" style="{{ ($showManufacturers==0)?'margin: 10px 0px 10px 0':'margin: 10px 10px 10px 0' }}">
-                     <div>
-                        <select class="form-control select2 voptyhycaj">
-                           <option value="">{{$controller::message("All Categories")}}</option>
-                           @foreach($categories as $category)
-                           <option {{  (Session::get("posCategory")!="" AND Session::get("posCategory")==$category['categoryId'])?'selected':''  }} value="{{$category['categoryId']}}">{{$category['heading']}}</option>
-                           @endforeach
-                        </select>
-                     </div>
+                  <div class="flexDiv {{ ($showManufacturers==0)?'wuawubiaxe':'iewyzzfhun' }}" 
+                       style="{{ ($showManufacturers==0)?'margin: 10px 0px 10px 0':'margin: 10px 10px 10px 0' }}">
+                       <button type="button" class="btn btn-primary mt-2 mb-2" 
+                           data-id="" 
+                           onclick="setCategory(this)">
+                           {{$controller::message("All Categories")}}
+                        </button>
+                      @foreach($categories as $category)
+                          <button type="button" class="btn btn-primary mt-2 mb-2" 
+                              data-id="{{$category['categoryId']}}" 
+                              onclick="setCategory(this)">
+                              {{$category['heading']}}
+                          </button>
+                      @endforeach
                   </div>
-                  @endif
-                  @if($showManufacturers == 1)
-                  <div class="flexDiv {{ ($showCategories==0)?'wuawubiaxe':'iewyzzfhun' }}" style="{{ ($showCategories==0)?'margin: 10px 0px 10px 0':'margin: 10px 0px 10px 0' }}">
-                     <div>
-                        <select class="form-control select2 ueekytclsn">
-                           <option value="">{{$controller::message("All Brands")}}</option>
-                           @foreach($manufacturers as $manufacturer)
-                           <option {{  (Session::get("posManufacturer")!="" AND Session::get("posManufacturer")==$manufacturer['manufacturerId'])?'selected':''  }} value="{{$manufacturer['manufacturerId']}}">{{$manufacturer['heading']}}</option>
-                           @endforeach
-                        </select>
-                     </div>
-                  </div>
-                  @endif
-               </div>
+              </div>              
             </div>
             <div class="khaxduhkmm" style="position: relative;">
                <div class="nknmyxjszh"></div>
