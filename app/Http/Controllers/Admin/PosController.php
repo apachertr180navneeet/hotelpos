@@ -1348,12 +1348,13 @@ class PosController extends Controller {
     }
     
     public static function checkout() {
-        $arrayOrder['hotel'] = 1;
+        $arrayOrder['hotel'] = 0;
         $settings = PosController::settings();
         if ($settings['enableHotelRoomMode'] == 1) {
             if (Session::get("hotelRoom") != '') {
                 $hotelRoom = Session::get("hotelRoom");
                 $arrayOrder['hotel'] = 1;
+                $arrayOrder['hold'] = 1;
 
             }
         }

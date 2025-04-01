@@ -90,19 +90,26 @@
          <h3 style="margin-left: 2%; margin-bottom: 1%;">Table List</h3>
          <div class="col-sm-12 col-xl-12 col-lg-12">
             <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-               <!-- Tables 1 to 12 -->
-               <?php for ($i = 1; $i <= 12; $i++): ?>
-                   <div class="card o-hidden" style="margin-left: 1%; height: 60%; width: 8%;">
+               @foreach($seatingTables as $table)
+                  @php
+                     $order = DB::select("SELECT * FROM `order` WHERE hold='1' AND seatingTableId='".$table->seatingTableId."' ORDER BY orderId DESC LIMIT 1");
+                     $order = $order[0] ?? null;
+                  @endphp
+                   <div class="card o-hidden @if($order) bg-danger @endif" style="margin-left: 1%; height: 60%; width: 12%;">
                        <div class="card-body">
                            <div class="media static-widget">
                                <div class="media-body">
-                                   <h6 class="font-roboto" style="text-align: center;font-size: large;font-weight: bolder;"><?= $i ?></h6>
-                                   <h4 class="mb-0 counter symbol" style="text-align: center;">1500</h4>
+                                   <h4 class="mb-0 counter symbol" style="text-align: center;font-size: large;font-weight: bolder;">{{ $table->heading }}</h4>
+                                   @if($order)
+                                      <h4 class="mb-0 counter symbol" style="text-align: center;">{{ $order->total }}</h4>
+                                   @else    
+                                      <h4 class="mb-0 counter symbol" style="text-align: center;">0</h4>
+                                   @endif
                                </div>
                            </div>
                        </div>
                    </div>
-               <?php endfor; ?>
+               @endforeach
            </div>           
          </div>
 
@@ -110,18 +117,28 @@
          <div class="col-sm-12 col-xl-12 col-lg-12">
             <div style="display: flex; flex-wrap: wrap; gap: 10px;">
                <!-- Tables 1 to 12 -->
-               <?php for ($i = 1; $i <= 15; $i++): ?>
-                   <div class="card o-hidden" style="margin-left: 1%; height: 60%; width: 8%;">
+               {{--  <?php for ($i = 1; $i <= 15; $i++): ?>  --}}
+               @foreach($hotelRooms as $room)
+                   @php
+                     $orderhotel = DB::select("SELECT * FROM `order` WHERE hold='1' ORDER BY orderId DESC LIMIT 1");
+                     $orderhotel = $orderhotel[0] ?? null;
+                     $orderHotelData = json_decode($orderhotel->orderProduct, true);
+                   @endphp
+                   <div class="card o-hidden @if ($orderHotelData[0]['productId'] == $room->productId) bg-danger @endif" style="margin-left: 1%; height: 60%; width: 16%;">
                        <div class="card-body">
                            <div class="media static-widget">
                                <div class="media-body">
-                                   <h6 class="font-roboto" style="text-align: center;font-size: large;font-weight: bolder;"><?= $i ?></h6>
-                                   <h4 class="mb-0 counter symbol" style="text-align: center;">1500</h4>
+                                   <h4 class="mb-0 counter symbol" style="text-align: center;font-size: large;font-weight: bolder;">{{ $room->heading }}</h4>
+                                    @if($orderHotelData[0]['productId'] == $room->productId)
+                                       <h4 class="mb-0 counter symbol" style="text-align: center;">{{ $orderhotel->total }}</h4>
+                                    @else    
+                                       <h4 class="mb-0 counter symbol" style="text-align: center;">0</h4>
+                                    @endif
                                </div>
                            </div>
                        </div>
                    </div>
-               <?php endfor; ?>
+               @endforeach
            </div>           
          </div>
       </div>

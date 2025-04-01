@@ -52,6 +52,8 @@ class AdminController extends Controller {
                 DB::insert("INSERT INTO tables SET tableName='" . $table . "',primaryKeyName='" . $columns[0]['Field'] . "',columns='" . json_encode($columns) . "'");
             }
         }
+        $data['seatingTables'] = DB::select("SELECT * FROM `seating_tables` WHERE storeId='" . Session::get('storeId') . "'");
+        $data['hotelRooms'] = DB::select("SELECT * FROM `products` WHERE productType='Hotel' AND storeId='" . Session::get('storeId') . "'");
         return view('admin.dashboard')->with($data);
     }
     public static function getCurrencySymbol() {
