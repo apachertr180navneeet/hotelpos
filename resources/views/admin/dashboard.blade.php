@@ -119,25 +119,25 @@
                <!-- Tables 1 to 12 -->
                {{--  <?php for ($i = 1; $i <= 15; $i++): ?>  --}}
                @foreach($hotelRooms as $room)
-                   @php
+                  @php
                      $orderhotel = DB::select("SELECT * FROM `order` WHERE hold='1' ORDER BY orderId DESC LIMIT 1");
                      $orderhotel = $orderhotel[0] ?? null;
-                     $orderHotelData = json_decode($orderhotel->orderProduct, true);
-                   @endphp
-                   <div class="card o-hidden @if ($orderHotelData[0]['productId'] == $room->productId) bg-danger @endif" style="margin-left: 1%; height: 60%; width: 16%;">
-                       <div class="card-body">
+                     $orderHotelData = $orderhotel ? json_decode($orderhotel->orderProduct, true) : [];
+                  @endphp
+                  <div class="card o-hidden @if (!empty($orderHotelData) && $orderHotelData[0]['productId'] == $room->productId) bg-danger @endif" style="margin-left: 1%; height: 60%; width: 16%;">
+                     <div class="card-body">
                            <div class="media static-widget">
-                               <div class="media-body">
-                                   <h4 class="mb-0 counter symbol" style="text-align: center;font-size: large;font-weight: bolder;">{{ $room->heading }}</h4>
-                                    @if($orderHotelData[0]['productId'] == $room->productId)
+                              <div class="media-body">
+                                 <h4 class="mb-0 counter symbol" style="text-align: center;font-size: large;font-weight: bolder;">{{ $room->heading }}</h4>
+                                 @if(!empty($orderHotelData) && $orderHotelData[0]['productId'] == $room->productId)
                                        <h4 class="mb-0 counter symbol" style="text-align: center;">{{ $orderhotel->total }}</h4>
-                                    @else    
+                                 @else    
                                        <h4 class="mb-0 counter symbol" style="text-align: center;">0</h4>
-                                    @endif
-                               </div>
+                                 @endif
+                              </div>
                            </div>
-                       </div>
-                   </div>
+                     </div>
+                  </div>
                @endforeach
            </div>           
          </div>

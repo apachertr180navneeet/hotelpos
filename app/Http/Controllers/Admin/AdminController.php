@@ -844,6 +844,9 @@ class AdminController extends Controller {
             }
         }
         catch(\Exception $e) {
+            echo "<pre>";
+            print_r($e);
+            die;
             echo json_encode(array("status" => "error", "message" => $e->getMessage()));
             return;
         }
