@@ -321,6 +321,7 @@ class PosController extends Controller {
         $data['store'] = Functions::getDataWhere("stores", "storeId", 1) [0];
         $data['customer'] = Functions::getDataWhere("customers", "customerId", $data['order']['customerId']) [0];
         $data['invoiceProducts'] = PosController::getDataWhere("order_product", "orderId,kotViewed", $data['order']['orderId'] . ',' . '0');
+        
         if (empty($data['invoiceProducts'])) {
             return redirect("/admin/kot");
         }

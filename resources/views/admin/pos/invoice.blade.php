@@ -1,5 +1,5 @@
 <?php
-$symbol = $controller::getCurrencySymbol();
+$symbol = "₹";
 $customCss = $controller::decrypt($template['customCss']);
 $str = $controller::decrypt($template['template']);
 $str = str_replace('{{URL}}', url('/'), $str);
