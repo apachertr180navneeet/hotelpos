@@ -90,6 +90,7 @@ $(document).on('click', '.dynamicSubmitButton', function() {
         processData: false,
         context: this,
         success: function(data) {
+            location.reload();
             var json = $.parseJSON(data);
             if (json.status == "success") {
                 $(context).html(html);
@@ -248,6 +249,7 @@ $(document).on('click', '.jmlcfeockz', function() {
         url: baseUrl + "/admin/quick-add-customer",
         data: "name=" + name + "&mobile=" + mobile + "&_token=" + token,
         success: function(data) {
+            location.reload();
             var json = $.parseJSON(data);
             if (json.status == "success") {
                 $("#xjeivqykta").load(location.href + " #xjeivqykta", function() {

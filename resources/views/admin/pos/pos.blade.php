@@ -35,43 +35,45 @@
             @if($enableSeatingTable == 1 || $enableOrderType == 1 || $enableHotelRoomMode==1)
             <div class="flexDiv ohlvqtqflu">
                <div class="dnasrmqxlu" style="overflow: scroll;height:86vh;">
-                  @if($enableOrderType == 1)
-                  <h6 class="mljalvnltj">{{$controller::message("Order Type")}}</h6>
-                  <div>
-                     <select class="form-control select2 snnfcfhdcy">
-                        <option value="">Order Type</option>
-                        <option {{ (Session::get("orderType")=='DineIn')?'selected':'' }} value="DineIn">Dine In</option>
-                        <option {{ (Session::get("orderType")=='Delivery')?'selected':'' }} value="Delivery">Delivery</option>
-                     </select>
-                  </div>
-                  @endif
+                  @if(session('roleId') != 36)
+                     @if($enableOrderType == 1)
+                     <h6 class="mljalvnltj">{{$controller::message("Order Type")}}</h6>
+                     <div>
+                        <select class="form-control select2 snnfcfhdcy">
+                           <option value="">Order Type</option>
+                           <option {{ (Session::get("orderType")=='DineIn')?'selected':'' }} value="DineIn">Dine In</option>
+                           <option {{ (Session::get("orderType")=='Delivery')?'selected':'' }} value="Delivery">Delivery</option>
+                        </select>
+                     </div>
+                     @endif
 
-                  @if($enableSeatingTable == 1)
-                  <h6 class="{{ (($enableOrderType == 0))?'rkwizhkscq':'ykaiwsoage'}}">{{$controller::message("Tables")}}</h6>
-                  @foreach($seatingTables as $table)
-                  @php
-                     $BookedTable = DB::table('order')
-                        ->where('seatingTableId', $table['seatingTableId'])
-                        ->where('hold', 1)
-                        ->get()
-                        ->toArray();
+                     @if($enableSeatingTable == 1)
+                     <h6 class="{{ (($enableOrderType == 0))?'rkwizhkscq':'ykaiwsoage'}}">{{$controller::message("Tables")}}</h6>
+                     @foreach($seatingTables as $table)
+                     @php
+                        $BookedTable = DB::table('order')
+                           ->where('seatingTableId', $table['seatingTableId'])
+                           ->where('hold', 1)
+                           ->get()
+                           ->toArray();
 
-                     // Ensure there's at least one record before accessing $BookedTable[0]
-                     $hasBooking = !empty($BookedTable);
-                  @endphp
+                        // Ensure there's at least one record before accessing $BookedTable[0]
+                        $hasBooking = !empty($BookedTable);
+                     @endphp
 
-                  <div class="anleefcqnn {{ (Session::get('seatingTableId') == $table['seatingTableId']) ? 'fspqembzib' : '' }} 
-                  {{ ($hasBooking && $BookedTable[0]->hold == 1) ? 'bg-danger tutwtgfgdr' : '' }}"
+                     <div class="anleefcqnn {{ (Session::get('seatingTableId') == $table['seatingTableId']) ? 'fspqembzib' : '' }} 
+                     {{ ($hasBooking && $BookedTable[0]->hold == 1) ? 'bg-danger tutwtgfgdr' : '' }}"
 
-                  order-id="{{ $hasBooking ? $BookedTable[0]->orderId : '' }}"
-                  data-id="{{ $table['seatingTableId'] }}">
+                     order-id="{{ $hasBooking ? $BookedTable[0]->orderId : '' }}"
+                     data-id="{{ $table['seatingTableId'] }}">
 
-                     {{ $table['heading'] }}
-                  </div>
-                  @endforeach
-                  @endif
-                  @if($enableSeatingTable == 1)
-                  <div class="anleefcqnn jipygxdcve" data-id="0">{{$controller::message("No Table")}}</div>
+                        {{ $table['heading'] }}
+                     </div>
+                     @endforeach
+                     @endif
+                     @if($enableSeatingTable == 1)
+                     <div class="anleefcqnn jipygxdcve" data-id="0">{{$controller::message("No Table")}}</div>
+                     @endif
                   @endif
                   @if($enableHotelRoomMode == 1)
                   <h6 class="{{ (($enableOrderType == 0))?'rkwizhkscq':'ykaiwsoage'}}">{{$controller::message("Hotel Rooms")}}</h6>
