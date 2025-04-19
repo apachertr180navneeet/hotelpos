@@ -1073,29 +1073,29 @@ CREATE TABLE `pages` (
   PRIMARY KEY (`pageId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT INTO pages VALUES("1","Terms & conditions","terms--conditions","Term Of Use","Term Of Use","Term Of Use","<h2>&nbsp;</h2>
-
-<h2>Definition and Usage</h2>
-
-<p>The str_replace() function replaces some characters with some other characters in a string.</p>
-
-<p>This function works by the following rules:</p>
-
-<p>{{$controller::moduleShortCode(14)}}</p>
-
-<ul>
-	<li>If the string to be searched is an array, it returns an array</li>
-	<li>If the string to be searched is an array, find and replace is performed with every array element</li>
-	<li>If both find and replace are arrays, and replace has fewer elements than find, an empty string will be used as replace</li>
-	<li>If find is an array and replace is a string, the replace string will be used for every find value</li>
-</ul>
-
-<p><b>Note:&nbsp;</b>This function is case-sensitive. Use the&nbsp;<a href=\"https://www.w3schools.com/php/func_string_str_ireplace.asp\">str_ireplace()</a>&nbsp;function to perform a case-insensitive search.</p>
-
-<p><b>Note:&nbsp;</b>This function is binary-safe.</p>
-
-<p>{{$controller::moduleShortCode(13)}}</p>
-","<p>Term Of Use</p>
+INSERT INTO pages VALUES("1","Terms & conditions","terms--conditions","Term Of Use","Term Of Use","Term Of Use","<h2>&nbsp;</h2>
+
+<h2>Definition and Usage</h2>
+
+<p>The str_replace() function replaces some characters with some other characters in a string.</p>
+
+<p>This function works by the following rules:</p>
+
+<p>{{$controller::moduleShortCode(14)}}</p>
+
+<ul>
+	<li>If the string to be searched is an array, it returns an array</li>
+	<li>If the string to be searched is an array, find and replace is performed with every array element</li>
+	<li>If both find and replace are arrays, and replace has fewer elements than find, an empty string will be used as replace</li>
+	<li>If find is an array and replace is a string, the replace string will be used for every find value</li>
+</ul>
+
+<p><b>Note:&nbsp;</b>This function is case-sensitive. Use the&nbsp;<a href=\"https://www.w3schools.com/php/func_string_str_ireplace.asp\">str_ireplace()</a>&nbsp;function to perform a case-insensitive search.</p>
+
+<p><b>Note:&nbsp;</b>This function is binary-safe.</p>
+
+<p>{{$controller::moduleShortCode(13)}}</p>
+","<p>Term Of Use</p>
 ","public/assets/uploads/484219044.jpg","1");
 
 
@@ -1503,39 +1503,39 @@ INSERT INTO states VALUES("29","Tripura","1","0","","","0","0","2024-02-09 16:28
 INSERT INTO states VALUES("30","Uttar Pradesh	","1","0","","","0","0","2024-02-09 16:28:14","0","2022-02-25 18:47:14","1");
 INSERT INTO states VALUES("31","Uttarakhand","1","0","","","0","0","2024-02-09 16:28:14","0","2022-02-25 18:47:30","1");
 INSERT INTO states VALUES("32","West Bengal	","1","0","","","0","0","2024-02-09 16:28:14","0","2022-02-25 18:47:47","1");
-INSERT INTO states VALUES("33","Test","1","0","public/assets/uploads/849234736.png","<p>This is a test data</p>
+INSERT INTO states VALUES("33","Test","1","0","public/assets/uploads/849234736.png","<p>This is a test data</p>
 ","0","0","2024-02-14 11:59:27","1","2024-02-14 11:59:27","1");
-INSERT INTO states VALUES("34","Test","1","0","public/assets/uploads/683043326.png","<p>This is a test data</p>
+INSERT INTO states VALUES("34","Test","1","0","public/assets/uploads/683043326.png","<p>This is a test data</p>
 ","0","0","2024-02-14 12:01:14","1","2024-02-14 12:01:14","1");
-INSERT INTO states VALUES("35","Test","1","0","public/assets/uploads/738511030.png","<p>This is a test data</p>
+INSERT INTO states VALUES("35","Test","1","0","public/assets/uploads/738511030.png","<p>This is a test data</p>
 ","0","0","2024-02-14 12:02:31","1","2024-02-14 12:02:31","1");
-INSERT INTO states VALUES("36","Test","1","0","public/assets/uploads/929412484.png","<p>This is a test data</p>
+INSERT INTO states VALUES("36","Test","1","0","public/assets/uploads/929412484.png","<p>This is a test data</p>
 ","0","0","2024-02-14 12:07:25","1","2024-02-14 12:07:25","1");
-INSERT INTO states VALUES("37","Banner 1","1","0","public/assets/uploads/510783491.png","<p>sdfsdf</p>
+INSERT INTO states VALUES("37","Banner 1","1","0","public/assets/uploads/510783491.png","<p>sdfsdf</p>
 ","0","0","2024-02-14 12:11:20","1","2024-02-14 12:11:20","1");
-INSERT INTO states VALUES("38","Banner 1","1","0","public/assets/uploads/583739371.png","<p>sdfsdf</p>
+INSERT INTO states VALUES("38","Banner 1","1","0","public/assets/uploads/583739371.png","<p>sdfsdf</p>
 ","0","0","2024-02-14 12:11:39","1","2024-02-14 12:11:39","1");
-INSERT INTO states VALUES("39","Banner 1","1","0","public/assets/uploads/801931305.png","<p>sdfsdf</p>
+INSERT INTO states VALUES("39","Banner 1","1","0","public/assets/uploads/801931305.png","<p>sdfsdf</p>
 ","0","0","2024-02-14 12:11:52","1","2024-02-14 12:11:52","1");
-INSERT INTO states VALUES("40","Banner 1","1","0","public/assets/uploads/265488797.png","<p>asdasdas</p>
+INSERT INTO states VALUES("40","Banner 1","1","0","public/assets/uploads/265488797.png","<p>asdasdas</p>
 ","0","0","2024-02-14 12:18:18","1","2024-02-14 12:18:18","1");
-INSERT INTO states VALUES("41","Banner 1","1","0","public/assets/uploads/400618602.png","<p>asdasdas</p>
+INSERT INTO states VALUES("41","Banner 1","1","0","public/assets/uploads/400618602.png","<p>asdasdas</p>
 ","0","0","2024-02-14 12:20:56","1","2024-02-14 12:20:56","1");
-INSERT INTO states VALUES("42","Banner 1","1","0","public/assets/uploads/686771979.png","<p>asdasdas</p>
+INSERT INTO states VALUES("42","Banner 1","1","0","public/assets/uploads/686771979.png","<p>asdasdas</p>
 ","0","0","2024-02-14 12:35:38","1","2024-02-14 12:35:38","1");
-INSERT INTO states VALUES("43","Banner 1","1","0","public/assets/uploads/924075069.png","<p>asdasdas</p>
+INSERT INTO states VALUES("43","Banner 1","1","0","public/assets/uploads/924075069.png","<p>asdasdas</p>
 ","0","0","2024-02-14 12:35:49","1","2024-02-14 12:35:49","1");
-INSERT INTO states VALUES("44","Banner 1","1","0","public/assets/uploads/443474842.png","<p>asdasdas</p>
+INSERT INTO states VALUES("44","Banner 1","1","0","public/assets/uploads/443474842.png","<p>asdasdas</p>
 ","0","0","2024-02-14 12:36:14","1","2024-02-14 12:36:14","1");
-INSERT INTO states VALUES("45","Banner 1","1","0","public/assets/uploads/557898121.png","<p>asdasdas</p>
+INSERT INTO states VALUES("45","Banner 1","1","0","public/assets/uploads/557898121.png","<p>asdasdas</p>
 ","0","0","2024-02-14 12:36:41","1","2024-02-14 12:36:41","1");
-INSERT INTO states VALUES("46","Banner 1","1","0","public/assets/uploads/222937984.png","<p>asdasdasd</p>
+INSERT INTO states VALUES("46","Banner 1","1","0","public/assets/uploads/222937984.png","<p>asdasdasd</p>
 ","0","0","2024-02-14 12:38:06","1","2024-02-14 12:38:06","1");
-INSERT INTO states VALUES("47","Banner 1","1","0","public/assets/uploads/500778351.png","<p>asdasd</p>
+INSERT INTO states VALUES("47","Banner 1","1","0","public/assets/uploads/500778351.png","<p>asdasd</p>
 ","0","0","2024-02-14 12:39:18","1","2024-02-14 12:39:18","1");
-INSERT INTO states VALUES("48","Banner 1","1","0","public/assets/uploads/509015561.png","<p>asdasd</p>
+INSERT INTO states VALUES("48","Banner 1","1","0","public/assets/uploads/509015561.png","<p>asdasd</p>
 ","0","0","2024-02-14 12:40:33","1","2024-02-14 12:40:33","1");
-INSERT INTO states VALUES("49","Banner 1","1","0","public/assets/uploads/780137938.png","<p>asdasd</p>
+INSERT INTO states VALUES("49","Banner 1","1","0","public/assets/uploads/780137938.png","<p>asdasd</p>
 ","0","0","2024-02-14 12:41:54","1","2024-02-14 12:41:54","1");
 
 
@@ -1618,7 +1618,7 @@ CREATE TABLE `store_settings` (
   PRIMARY KEY (`storeSettingId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
-INSERT INTO store_settings VALUES("1","Default New Shop","public/assets/uploads/662747144.png","demo@gmail.com","9999999999","","Your address goes here","","","","","0","1","ContactAgent","customerId-fullName-customers,propertyId-heading-properties","","customer_group,vendors,customers,manufacturers,products,additional_charges","1","1","0","10","1","INV-2024-","1","2","2","1","1","append","1","1","1","1","1","1","1","0","0","1","1","1","1","1","1","1","1","<p>This article will get you started with creating your own custom Terms and Conditions agreement. We&#39;ve also put together a Sample Terms and Conditions Template that you can use to help you write your own.</p>
+INSERT INTO store_settings VALUES("1","Default New Shop","public/assets/uploads/662747144.png","demo@gmail.com","9999999999","","Your address goes here","","","","","0","1","ContactAgent","customerId-fullName-customers,propertyId-heading-properties","","customer_group,vendors,customers,manufacturers,products,additional_charges","1","1","0","10","1","INV-2024-","1","2","2","1","1","append","1","1","1","1","1","1","1","0","0","1","1","1","1","1","1","1","1","<p>This article will get you started with creating your own custom Terms and Conditions agreement. We&#39;ve also put together a Sample Terms and Conditions Template that you can use to help you write your own.</p>
 ","","","1","3","1","3","2","0","0");
 
 
@@ -1750,30 +1750,30 @@ CREATE TABLE `templates` (
   PRIMARY KEY (`templateId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
-INSERT INTO templates VALUES("1","Thank you for subscribing our mailing list","<p>Hi {NAME},</p>
-
-<p>Thank you for subscribing to our mailing list.</p>
-
-<p>Regards {WEBSITENAME}</p>
+INSERT INTO templates VALUES("1","Thank you for subscribing our mailing list","<p>Hi {NAME},</p>
+
+<p>Thank you for subscribing to our mailing list.</p>
+
+<p>Regards {WEBSITENAME}</p>
 ","Subscribe","User","1","2022-05-01 19:54:16");
-INSERT INTO templates VALUES("2","A new user subscribed to our list","<p>Hi Admin,</p>
-
-<p>A new user has been subscribed to our mailing list.</p>
-
-<p>Regards {WEBSITENAME}</p>
+INSERT INTO templates VALUES("2","A new user subscribed to our list","<p>Hi Admin,</p>
+
+<p>A new user has been subscribed to our mailing list.</p>
+
+<p>Regards {WEBSITENAME}</p>
 ","Subscribe","Admin","1","2022-05-01 19:54:16");
-INSERT INTO templates VALUES("3","New Enquiry Received","<p>Hi {NAME},</p>
-
-<p>A new inquiry was received. Please have a look at it.</p>
-
-<p>{CONTENT}<br />
-Regards {WEBSITENAME}</p>
+INSERT INTO templates VALUES("3","New Enquiry Received","<p>Hi {NAME},</p>
+
+<p>A new inquiry was received. Please have a look at it.</p>
+
+<p>{CONTENT}<br />
+Regards {WEBSITENAME}</p>
 ","Enquiry","Admin","1","2022-05-01 20:45:05");
-INSERT INTO templates VALUES("4","Thank you for your enquiry","<p>Hi {NAME},</p>
-
-<p>Thank You For Your Query. We will reply to you as soon as possible.</p>
-
-<p>Regards {WEBSITENAME}</p>
+INSERT INTO templates VALUES("4","Thank you for your enquiry","<p>Hi {NAME},</p>
+
+<p>Thank You For Your Query. We will reply to you as soon as possible.</p>
+
+<p>Regards {WEBSITENAME}</p>
 ","Enquiry","User","1","2022-05-01 20:45:05");
 INSERT INTO templates VALUES("5","Thank you for your enquiry","<p>Hi {NAME},</p>
 

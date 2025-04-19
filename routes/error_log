@@ -1,4 +1,0 @@
-[02-Apr-2025 02:57:03 America/Chicago] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home1/hkpmfste/public_html/routes/web.php:88
-Stack trace:
-#0 {main}
-  thrown in /home1/hkpmfste/public_html/routes/web.php on line 88

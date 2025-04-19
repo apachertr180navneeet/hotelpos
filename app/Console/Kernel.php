@@ -15,7 +15,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('references:auto-verify')->everyMinute();
+        // $schedule->command('inspire')->hourly();
     }
 
     /**
