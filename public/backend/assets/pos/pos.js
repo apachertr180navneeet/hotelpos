@@ -27,7 +27,6 @@ const keyInRange = (keyCode) =>
     (keyCode >= 48 && keyCode <= 57) || /* top row numbers       */
     (keyCode >= 96 && keyCode <= 105) || /* keypad numbers        */
     (keyCode === 110 || keyCode === 190) || /* decimal separator     */
-    (keyCode === 53) || /* percentage            */
     (keyCode === 8 || keyCode === 46); /* back-space and delete */
 main();
 

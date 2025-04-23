@@ -225,7 +225,7 @@ Route::post('/admin/saveOrderHistory',[OrderController::Class,'saveOrderHistory'
 Route::post('/admin/dataTableOrderHistory',[OrderController::Class,'dataTableOrderHistory']);
 Route::post('/admin/saveOrderHistory',[OrderController::Class,'saveOrderHistory']);
 
-Route::get('/admin/pos',[PosController::Class,'admin/pos']);
+Route::get('/admin/pos',[PosController::Class,'index']);
 
 Route::get('/',[FrontendController::Class,'index']);
 Route::get('/home',[FrontendController::Class,'index']);
