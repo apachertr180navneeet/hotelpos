@@ -37,73 +37,137 @@
                <div class="dnasrmqxlu" style="overflow: scroll;height:86vh;">
                   @if(session('roleId') == 37)
                      @if($enableOrderType == 1)
-                     <h6 class="mljalvnltj">{{$controller::message("Order Type")}}</h6>
-                     <div>
-                        <select class="form-control select2 snnfcfhdcy">
-                           <option value="">Order Type</option>
-                           <option {{ (Session::get("orderType")=='DineIn')?'selected':'' }} value="DineIn">Dine In</option>
-                           <option {{ (Session::get("orderType")=='Delivery')?'selected':'' }} value="Delivery">Delivery</option>
-                        </select>
-                     </div>
+                        <h6 class="mljalvnltj">{{ $controller::message("Order Type") }}</h6>
+                        <div>
+                              <select class="form-control select2 snnfcfhdcy">
+                                 <option value="">Order Type</option>
+                                 <option {{ (Session::get("orderType") == 'DineIn') ? 'selected' : '' }} value="DineIn">Dine In</option>
+                                 <option {{ (Session::get("orderType") == 'Delivery') ? 'selected' : '' }} value="Delivery">Delivery</option>
+                              </select>
+                        </div>
                      @endif
 
                      @if($enableSeatingTable == 1)
-                     <h6 class="{{ (($enableOrderType == 0))?'rkwizhkscq':'ykaiwsoage'}}">{{$controller::message("Tables")}}</h6>
-                     @foreach($seatingTables as $table)
-                     @php
-                        $BookedTable = DB::table('order')
-                           ->where('seatingTableId', $table['seatingTableId'])
-                           ->where('hold', 1)
-                           ->get()
-                           ->toArray();
+                        <h6 class="{{ ($enableOrderType == 0) ? 'rkwizhkscq' : 'ykaiwsoage' }}">{{ $controller::message("Tables") }}</h6>
+                        @foreach($seatingTables as $table)
+                              @php
+                                 $BookedTable = DB::table('order')
+                                    ->where('seatingTableId', $table['seatingTableId'])
+                                    ->where('hold', 1)
+                                    ->get()
+                                    ->toArray();
+                                 $hasBooking = !empty($BookedTable);
+                              @endphp
 
-                        // Ensure there's at least one record before accessing $BookedTable[0]
-                        $hasBooking = !empty($BookedTable);
-                     @endphp
+                              <div class="anleefcqnn {{ (Session::get('seatingTableId') == $table['seatingTableId']) ? 'fspqembzib' : '' }} 
+                                 {{ ($hasBooking && $BookedTable[0]->hold == 1) ? 'bg-danger tutwtgfgdr' : '' }}"
+                                 order-id="{{ $hasBooking ? $BookedTable[0]->orderId : '' }}"
+                                 data-id="{{ $table['seatingTableId'] }}">
+                                 {{ $table['heading'] }}
+                              </div>
+                        @endforeach
 
-                     <div class="anleefcqnn {{ (Session::get('seatingTableId') == $table['seatingTableId']) ? 'fspqembzib' : '' }} 
-                     {{ ($hasBooking && $BookedTable[0]->hold == 1) ? 'bg-danger tutwtgfgdr' : '' }}"
-
-                     order-id="{{ $hasBooking ? $BookedTable[0]->orderId : '' }}"
-                     data-id="{{ $table['seatingTableId'] }}">
-
-                        {{ $table['heading'] }}
-                     </div>
-                     @endforeach
-                     @endif
-                     @if($enableSeatingTable == 1)
-                     <div class="anleefcqnn jipygxdcve" data-id="0">{{$controller::message("No Table")}}</div>
+                        <div class="anleefcqnn jipygxdcve" data-id="0">{{ $controller::message("No Table") }}</div>
                      @endif
                   @endif
+
                   @if(session('roleId') == 36)
                      @if($enableHotelRoomMode == 1)
-                     <h6 class="{{ (($enableOrderType == 0))?'rkwizhkscq':'ykaiwsoage'}}">{{$controller::message("Hotel Rooms")}}</h6>
-                     @foreach($hotelRooms as $room)
+                        <h6 class="{{ ($enableOrderType == 0) ? 'rkwizhkscq' : 'ykaiwsoage' }}">{{ $controller::message("Hotel Rooms") }}</h6>
+                        @foreach($hotelRooms as $room)
+                              @php
+                                 $BookedRooms = false;
+                                 $BookedHotelRoom = DB::select("SELECT * FROM `order` WHERE hold = 1 AND hotel = 1");
+                              @endphp
 
-                        @php($BookedRooms = FALSE)  
-                        <?php
-                           $BookedHotelRoom = DB::select("SELECT * FROM `order` WHERE hold='1' AND hotel='1'")
-                        ?>
-                        @foreach($BookedHotelRoom as $BookedRoom)
-                              @php($orderDetail = json_decode($BookedRoom->orderProduct, true))
-                              @if(isset($orderDetail[0]['productId']) && $orderDetail[0]['productId'] == $room['productId'])
-                                 <?php
-                                    $BookedRooms = TRUE;
-                                 ?>
+                              @foreach($BookedHotelRoom as $BookedRoom)
+                                 @php
+                                    $orderDetail = json_decode($BookedRoom->orderProduct, true);
+                                 @endphp
+                                 @if(isset($orderDetail[0]['productId']) && $orderDetail[0]['productId'] == $room['productId'])
+                                    @php $BookedRooms = true; @endphp
+                                 @endif
+                              @endforeach
+
+                              @if($BookedRooms)
+                                 <div style="width: 100%; padding: 5px; background: #ccc; color: white; margin-bottom: 5px; cursor: pointer;">
+                                    {{ $room['heading'] }}
+                                 </div>
+                              @else
+                                 <div class="inrqwlsqvg{{ (Session::has('hotelRoom') && isset(Session::get('hotelRoom')['post']) && Session::get('hotelRoom')['post']['productId'] == $room['productId']) ? ' fspqembzib' : '' }}"
+                                    data-id="{{ $room['productId'] }}">
+                                    {{ $room['heading'] }}
+                                 </div>
                               @endif
                         @endforeach
-                        @if($BookedRooms == TRUE)
-                              <div style="width: 100%;padding: 5px;background: #ccc;color: white;margin-bottom: 5px;cursor: pointer;">
-                                 {{$room['heading']}}
+                        {{-- <div class="fxexbqdlol" style="width: 100%; padding: 5px; background: #ccc; color: white; margin-bottom: 5px; cursor: pointer;" data-id="0">{{ $controller::message("No Room") }}</div> --}}
+                     @endif
+                  @endif
+
+                  @if(session('roleId') != 37 && session('roleId') != 36)
+                     @if($enableOrderType == 1)
+                        <h6 class="mljalvnltj">{{ $controller::message("Order Type") }}</h6>
+                        <div>
+                              <select class="form-control select2 snnfcfhdcy">
+                                 <option value="">Order Type</option>
+                                 <option {{ (Session::get("orderType") == 'DineIn') ? 'selected' : '' }} value="DineIn">Dine In</option>
+                                 <option {{ (Session::get("orderType") == 'Delivery') ? 'selected' : '' }} value="Delivery">Delivery</option>
+                              </select>
+                        </div>
+                     @endif
+
+                     @if($enableSeatingTable == 1)
+                        <h6 class="{{ ($enableOrderType == 0) ? 'rkwizhkscq' : 'ykaiwsoage' }}">{{ $controller::message("Tables") }}</h6>
+                        @foreach($seatingTables as $table)
+                              @php
+                                 $BookedTable = DB::table('order')
+                                    ->where('seatingTableId', $table['seatingTableId'])
+                                    ->where('hold', 1)
+                                    ->get()
+                                    ->toArray();
+                                 $hasBooking = !empty($BookedTable);
+                              @endphp
+
+                              <div class="anleefcqnn {{ (Session::get('seatingTableId') == $table['seatingTableId']) ? 'fspqembzib' : '' }} 
+                                 {{ ($hasBooking && $BookedTable[0]->hold == 1) ? 'bg-danger tutwtgfgdr' : '' }}"
+                                 order-id="{{ $hasBooking ? $BookedTable[0]->orderId : '' }}"
+                                 data-id="{{ $table['seatingTableId'] }}">
+                                 {{ $table['heading'] }}
                               </div>
-                        @else
-                              <div class="inrqwlsqvg{{ (Session::has('hotelRoom') && isset(Session::get('hotelRoom')['post']) && Session::get('hotelRoom')['post']['productId'] == $room['productId']) ? ' fspqembzib' : '' }}" 
-                                 data-id="{{$room['productId']}}">
-                                 {{$room['heading']}}
-                              </div>
-                        @endif
-                     @endforeach
-                     <!-- <div class="fxexbqdlol" style="width: 100%;padding: 5px;background: #ccc;color: white;margin-bottom: 5px;cursor: pointer;" data-id="0">{{$controller::message("No Room")}}</div> -->
+                        @endforeach
+
+                        <div class="anleefcqnn jipygxdcve" data-id="0">{{ $controller::message("No Table") }}</div>
+                     @endif
+
+                     @if($enableHotelRoomMode == 1)
+                        <h6 class="{{ ($enableOrderType == 0) ? 'rkwizhkscq' : 'ykaiwsoage' }}">{{ $controller::message("Hotel Rooms") }}</h6>
+                        @foreach($hotelRooms as $room)
+                              @php
+                                 $BookedRooms = false;
+                                 $BookedHotelRoom = DB::select("SELECT * FROM `order` WHERE hold = 1 AND hotel = 1");
+                              @endphp
+
+                              @foreach($BookedHotelRoom as $BookedRoom)
+                                 @php
+                                    $orderDetail = json_decode($BookedRoom->orderProduct, true);
+                                 @endphp
+                                 @if(isset($orderDetail[0]['productId']) && $orderDetail[0]['productId'] == $room['productId'])
+                                    @php $BookedRooms = true; @endphp
+                                 @endif
+                              @endforeach
+
+                              @if($BookedRooms)
+                                 <div style="width: 100%; padding: 5px; background: #ccc; color: white; margin-bottom: 5px; cursor: pointer;">
+                                    {{ $room['heading'] }}
+                                 </div>
+                              @else
+                                 <div class="inrqwlsqvg{{ (Session::has('hotelRoom') && isset(Session::get('hotelRoom')['post']) && Session::get('hotelRoom')['post']['productId'] == $room['productId']) ? ' fspqembzib' : '' }}"
+                                    data-id="{{ $room['productId'] }}">
+                                    {{ $room['heading'] }}
+                                 </div>
+                              @endif
+                        @endforeach
+                        {{-- <div class="fxexbqdlol" style="width: 100%; padding: 5px; background: #ccc; color: white; margin-bottom: 5px; cursor: pointer;" data-id="0">{{ $controller::message("No Room") }}</div> --}}
                      @endif
                   @endif
             </div>
@@ -162,64 +226,64 @@
                <div class="nknmyxjszh"></div>
                <div class="lzyoqmylwh">
                   @if(session('roleId') == 37)
-                  <div class="parent">
-                     @foreach($products as $product)
-                        @if ($product['productType'] != 'Hotel')
-                        @php($BookedRoomshotel = FALSE)  
-                        <?php
-                           $BookedHotelRooms = DB::select("SELECT * FROM `order` WHERE hold='1' AND hotel='1'")
-                        ?>
-                        @foreach($BookedHotelRooms as $BookedRooms)
-                              @php($orderDetails = json_decode($BookedRooms->orderProduct, true))
-                              @if(isset($orderDetails[0]['productId']) && $orderDetails[0]['productId'] == $product['productId'])
-                                 <?php
-                                    $BookedRoomshotel = TRUE;
-                                 ?>
-                              @endif
-                        @endforeach
-                        @if($BookedRoomshotel == FALSE)
-                           @php($classProduct = 'mjhnxodsgc')
-                                 @if($restaurant == 1)
-                                 @php($classProduct = 'mjhnxodsgc child')
-                                 @else
-                                 @php($classProduct = 'mjhnxodsgc childNoRestaurant')
+                     <div class="parent">
+                        @foreach($products as $product)
+                           @if ($product['productType'] != 'Hotel')
+                           @php($BookedRoomshotel = FALSE)  
+                           <?php
+                              $BookedHotelRooms = DB::select("SELECT * FROM `order` WHERE hold='1' AND hotel='1'")
+                           ?>
+                           @foreach($BookedHotelRooms as $BookedRooms)
+                                 @php($orderDetails = json_decode($BookedRooms->orderProduct, true))
+                                 @if(isset($orderDetails[0]['productId']) && $orderDetails[0]['productId'] == $product['productId'])
+                                    <?php
+                                       $BookedRoomshotel = TRUE;
+                                    ?>
                                  @endif
+                           @endforeach
+                           @if($BookedRoomshotel == FALSE)
+                              @php($classProduct = 'mjhnxodsgc')
+                                    @if($restaurant == 1)
+                                    @php($classProduct = 'mjhnxodsgc child')
+                                    @else
+                                    @php($classProduct = 'mjhnxodsgc childNoRestaurant')
+                                    @endif
 
-                           @if($product['productType']=='Hotel')
-                           @if($controller::checkHotelBookingStatus($product['productId']) > 0)
-                              @php($classProduct = 'umhcbysyru')   
-                           @endif
-                           @endif
-                           <div data-json="{{json_encode($product)}}" class="{{ $classProduct }}">
-                              <div class="eplxwhepxa symbol">{{$product['price']}}</div>
-                              <div class="waifqtsovw">{{$controller::message("Qty")}}:{{$product['quantity']}}</div>
-                              <div class="eplxwhepxa"></div>
-                              @if($showImage == 1)
-                              <div>
-                                 @if($enableLightBox == 0)
-                                 <img src="{{$controller::image($product['image'])}}" class="inqiowvkgz">
-                                 @else
-                                 <a class="example-image-link" href="{{ $controller::image($product['image']) }}" data-lightbox="{{$product['heading']}}" data-title="{{$product['heading']}}"><img class="inqiowvkgz" src="{{ $controller::image($product['image']) }}"></a>
-                                 @if($product['relatedImage']!='' AND !empty(json_decode($product['relatedImage'],true)))
-                                 @foreach(json_decode($product['relatedImage'],true) as $image)
-                                 <a class="example-image-link" href="{{ $controller::image($image) }}" data-lightbox="{{$product['heading']}}" data-title="{{$product['heading']}}"></a>
-                                 @endforeach
+                              @if($product['productType']=='Hotel')
+                              @if($controller::checkHotelBookingStatus($product['productId']) > 0)
+                                 @php($classProduct = 'umhcbysyru')   
+                              @endif
+                              @endif
+                              <div data-json="{{json_encode($product)}}" class="{{ $classProduct }}">
+                                 <div class="eplxwhepxa symbol">{{$product['price']}}</div>
+                                 <div class="waifqtsovw">{{$controller::message("Qty")}}:{{$product['quantity']}}</div>
+                                 <div class="eplxwhepxa"></div>
+                                 @if($showImage == 1)
+                                 <div>
+                                    @if($enableLightBox == 0)
+                                    <img src="{{$controller::image($product['image'])}}" class="inqiowvkgz">
+                                    @else
+                                    <a class="example-image-link" href="{{ $controller::image($product['image']) }}" data-lightbox="{{$product['heading']}}" data-title="{{$product['heading']}}"><img class="inqiowvkgz" src="{{ $controller::image($product['image']) }}"></a>
+                                    @if($product['relatedImage']!='' AND !empty(json_decode($product['relatedImage'],true)))
+                                    @foreach(json_decode($product['relatedImage'],true) as $image)
+                                    <a class="example-image-link" href="{{ $controller::image($image) }}" data-lightbox="{{$product['heading']}}" data-title="{{$product['heading']}}"></a>
+                                    @endforeach
+                                    @endif
+                                    @endif
+                                 </div>
                                  @endif
+                                 <div class="sixherwpuw oqmseozavb" style="{{ ($showImage != 1)?'margin-top:20px;':''  }}">{{$product['heading']}}</div>
+                                 @if($showBarcode == 1)
+                                 <div class="sixherwpuw">{{$controller::message("Barcode")}} : <span>{{$product['barcode']}}</span></div>
+                                 @endif
+                                 @if($showModal == 1)
+                                 <div class="sixherwpuw">{{$controller::message("Model")}} : <span>{{$product['model']}}</span></div>
                                  @endif
                               </div>
-                              @endif
-                              <div class="sixherwpuw oqmseozavb" style="{{ ($showImage != 1)?'margin-top:20px;':''  }}">{{$product['heading']}}</div>
-                              @if($showBarcode == 1)
-                              <div class="sixherwpuw">{{$controller::message("Barcode")}} : <span>{{$product['barcode']}}</span></div>
-                              @endif
-                              @if($showModal == 1)
-                              <div class="sixherwpuw">{{$controller::message("Model")}} : <span>{{$product['model']}}</span></div>
-                              @endif
-                           </div>
-                        @endif
-                        @endif
-                     @endforeach
-                  </div>
+                           @endif
+                           @endif
+                        @endforeach
+                     </div>
                   @endif
                   @if(session('roleId') == 36)
                      <div class="parent">
@@ -279,6 +343,64 @@
                         @endforeach
                      </div>
                   @endif
+                  @if(session('roleId') != 36 || session('roleId') != 37)
+                  <div class="parent">
+                     @foreach($products as $product)
+                           @php($BookedRoomshotel = FALSE)  
+                           <?php
+                              $BookedHotelRooms = DB::select("SELECT * FROM `order` WHERE hold='1' AND hotel='1'")
+                           ?>
+                           @foreach($BookedHotelRooms as $BookedRooms)
+                                 @php($orderDetails = json_decode($BookedRooms->orderProduct, true))
+                                 @if(isset($orderDetails[0]['productId']) && $orderDetails[0]['productId'] == $product['productId'])
+                                    <?php
+                                       $BookedRoomshotel = TRUE;
+                                    ?>
+                                 @endif
+                           @endforeach
+                           @if($BookedRoomshotel == FALSE)
+                              @php($classProduct = 'mjhnxodsgc')
+                                    @if($restaurant == 1)
+                                    @php($classProduct = 'mjhnxodsgc child')
+                                    @else
+                                    @php($classProduct = 'mjhnxodsgc childNoRestaurant')
+                                    @endif
+
+                              @if($product['productType']=='Hotel')
+                              @if($controller::checkHotelBookingStatus($product['productId']) > 0)
+                                 @php($classProduct = 'umhcbysyru')   
+                              @endif
+                              @endif
+                              <div data-json="{{json_encode($product)}}" class="{{ $classProduct }}">
+                                 <div class="eplxwhepxa symbol">{{$product['price']}}</div>
+                                 <div class="waifqtsovw">{{$controller::message("Qty")}}:{{$product['quantity']}}</div>
+                                 <div class="eplxwhepxa"></div>
+                                 @if($showImage == 1)
+                                 <div>
+                                    @if($enableLightBox == 0)
+                                    <img src="{{$controller::image($product['image'])}}" class="inqiowvkgz">
+                                    @else
+                                    <a class="example-image-link" href="{{ $controller::image($product['image']) }}" data-lightbox="{{$product['heading']}}" data-title="{{$product['heading']}}"><img class="inqiowvkgz" src="{{ $controller::image($product['image']) }}"></a>
+                                    @if($product['relatedImage']!='' AND !empty(json_decode($product['relatedImage'],true)))
+                                    @foreach(json_decode($product['relatedImage'],true) as $image)
+                                    <a class="example-image-link" href="{{ $controller::image($image) }}" data-lightbox="{{$product['heading']}}" data-title="{{$product['heading']}}"></a>
+                                    @endforeach
+                                    @endif
+                                    @endif
+                                 </div>
+                                 @endif
+                                 <div class="sixherwpuw oqmseozavb" style="{{ ($showImage != 1)?'margin-top:20px;':''  }}">{{$product['heading']}}</div>
+                                 @if($showBarcode == 1)
+                                 <div class="sixherwpuw">{{$controller::message("Barcode")}} : <span>{{$product['barcode']}}</span></div>
+                                 @endif
+                                 @if($showModal == 1)
+                                 <div class="sixherwpuw">{{$controller::message("Model")}} : <span>{{$product['model']}}</span></div>
+                                 @endif
+                              </div>
+                           @endif
+                     @endforeach
+                  </div>
+                  @endif 
                </div>
             </div>
          </div>
