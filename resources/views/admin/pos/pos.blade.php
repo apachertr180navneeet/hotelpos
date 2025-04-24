@@ -467,7 +467,6 @@
                      <tr>
                         <td>{{$controller::message("Product")}}</td>
                         <td>{{$controller::message("Quantity")}}</td>
-                        <td>{{$controller::message("Discount")}}</td>
                         <td>{{$controller::message("Price")}}</td>
                         <td align="right">{{$controller::message("Total")}}</td>
                      </tr>
@@ -504,12 +503,11 @@
                            </td>
                            <td>
                               @if ($cart['productType']=='Hotel')
-                              <input readonly type="text" style="width:50px;text-align: center;" data-id="{{$cart['productId']}}" class="form-control qcjmjrbsop isNatural" value="{{$cart['quantity']}}">
+                              <td><input type="text" style="width:50px;text-align: center;" class="form-control vojotpessc percentage" data-id="{{$cart['productId']}}" value="{{$cart['discount']}}"></td>
                               @else
                               <input type="text" style="width:50px;text-align: center;" data-id="{{$cart['productId']}}" class="form-control qcjmjrbsop isNatural" value="{{$cart['quantity']}}">
                               @endif
                            </td>
-                           <td><input type="text" style="width:50px;text-align: center;" class="form-control vojotpessc percentage" data-id="{{$cart['productId']}}" value="{{$cart['discount']}}"></td>
                            <td class="symbol"><span class="kmaziybpmu {{ ($cart['changePriceDuringBilling']==1)?'xkvawimkrj':'' }}" data-id="{{$cart['productId']}}">{{$cart['price']}}</span></td>
                            <td align="right" class="symbol"><span class="akbvtlipgp">{{$cart['total']}}</span><i class="fa-solid fa-trash pull-right twqysfgott" style="color:#5bc273" data-id="{{$cart['productId']}}"></i></td>
                         </tr>

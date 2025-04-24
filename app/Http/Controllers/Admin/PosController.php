@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Validator;
 use Session;
 use Mail;
 use Exception;
-        use Carbon\Carbon;
+use Carbon\Carbon;
 
 class PosController extends Controller {
     public function __construct() {
@@ -1108,6 +1108,7 @@ class PosController extends Controller {
         $requiredOtpForRewardReedem = $settings['requiredOtpForRewardReedem'];
         $minRewardPointsToSendOtp = $settings['minRewardPointsToSendOtp'];
         $enableHotelRoomMode = $settings['enableHotelRoomMode'];
+        $orderId = Session::get("updateId");
         if ($showStoreInfomation == 1) {
             $margin = 5;
         }
@@ -1124,6 +1125,8 @@ class PosController extends Controller {
         $html .= '<label style="font-size:11px;color: var(--grey);margin-left:5px;">' . PosController::message("CHECKOUT") . '</label>';
         $html .= '<div class="teauoqhxpy">';
         $cartTotalArray = PosController::cartTotal();
+        $allSessionData = session()->all();
+        
         $html .= '<table class="jtoweyfypd oesmgitduc">';
         $html .= '<tr>';
         $html .= '<td width="70%" class="prtduitanr">' . PosController::message("Total Items In Cart") . '</td>';
@@ -1253,8 +1256,11 @@ class PosController extends Controller {
         $html .= '</td>';
         $html .= '</tr>';
         $html .= '<tr>';
-        $html .= '<td colspan="2">';
+        $html .= '<td colspan="1">';
         $html .= '<div class="ucduyqmgff" data-id="finalCheckout">' . PosController::message("CHECKOUT") . '</div>';
+        $html .= '</td>';
+        $html .= '<td colspan="1">';
+        $html .= '<div class="ucduyqmgff mdbjzbadvj" order-id="'.$orderId.'">Print Invoice</div>';
         $html .= '</td>';
         $html .= '</tr>';
         $html .= '</table>';
@@ -1399,6 +1405,7 @@ class PosController extends Controller {
         $arrayOrder['employeeId'] = $_POST['employeeId'];
         $arrayOrder['posComment'] = $_POST['posComment'];
         $arrayOrder['deliveryDate'] = $_POST['deliveryDate'];
+        $arrayOrder['dateAdded'] = Carbon::now();
         if (!empty($_FILES['posImage']) and $_FILES['posImage']['name'] != '') {
             $image = Functions::uploadNewImage($_FILES['posImage']);
             $arrayOrder['posImage'] = $image['message'];

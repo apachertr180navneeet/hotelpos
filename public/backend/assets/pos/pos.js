@@ -42,6 +42,7 @@ function toast(type, heading, message) {
     })
 }
 $(document).on('click', '.dynamicSubmitButton', function() {
+    alert('hello');
     var context = $(this);
     var html = $(this).html();
     var modalId = $(this).closest(".modal").attr("id");
@@ -89,7 +90,7 @@ $(document).on('click', '.dynamicSubmitButton', function() {
         processData: false,
         context: this,
         success: function(data) {
-            location.reload();
+            //location.reload();
             var json = $.parseJSON(data);
             if (json.status == "success") {
                 $(context).html(html);

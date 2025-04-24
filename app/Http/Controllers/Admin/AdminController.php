@@ -1915,7 +1915,7 @@ class AdminController extends Controller {
             $getLoginData = DB::connection("login")->select("SELECT * FROM users WHERE userId='" . $lastSegment . "'");
             $getLoginData = Functions::arrayConvert($getLoginData);
             if(empty($getLoginData)){
-                Session::flash('message', 'No user found with this ID in the USERS'); 
+                Session::flash('message', 'No user found with this ID in the email already takenUSERS'); 
                 Session::flash('alert-class', 'alert-danger'); 
                 return redirect("admin/popup-message");
             }
