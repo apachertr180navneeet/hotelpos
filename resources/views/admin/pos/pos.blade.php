@@ -24,16 +24,315 @@
            content: "₹";
            display: inline-block;
            margin-right: 2px;
+           
          }
+       /* Base styles */
+/* Base Layout */
+.parent {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 2fr));
+  gap: 5px;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+/* Card Styling */
+.product-card,
+.mjhnxodsgc {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover,
+.mjhnxodsgc:hover {
+  transform: scale(1.02);
+}
+
+/* Visual Alert Styling */
+.umhcbysyru {
+  background: #f8d7da;
+  border-color: #f5c2c7;
+}
+
+.child,
+.childNoRestaurant {
+  padding: 8px;
+}
+
+/* Images */
+.inqiowvkgz,
+.product-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  object-fit: cover;
+  max-height: 160px;
+}
+
+.img-container {
+  width: 100%;
+  background-color: #eee;
+}
+
+/* Text Styling */
+.symbol,
+.waifqtsovw,
+.sixherwpuw {
+  margin-top: 8px;
+  font-size: 1rem;
+  word-wrap: break-word;
+}
+
+/* Form Elements */
+.form-control,
+.anleefcqnn,
+.inrqwlsqvg {
+  font-size: 1rem;
+  padding: 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.rslpmygbcf {
+  width: 100%;
+  height: 50px;
+  font-size: 1rem;
+}
+
+.website-logo-name {
+  display: inline;
+}
+
+.dnasrmqxlu {
+  overflow-y: auto;
+  max-height: 90vh;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* Headings */
+h6 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* MEDIA QUERIES */
+
+/* Extra Small Devices */
+@media screen and (max-width: 480px) {
+  .parent {
+    grid-template-columns: 1fr;
+    padding: 8px;
+  }
+
+  .mjhnxodsgc {
+    padding: 6px;
+  }
+
+  .inqiowvkgz {
+    max-height: 120px;
+  }
+
+  .symbol,
+  .waifqtsovw,
+  .sixherwpuw {
+    font-size: 0.8rem;
+  }
+
+  .form-control,
+  .anleefcqnn,
+  .inrqwlsqvg {
+    font-size: 10px;
+    padding: 2px;
+  }
+
+  h6 {
+    font-size: 12px;
+  }
+
+  .rslpmygbcf {
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .website-logo-name {
+    display: none;
+  }
+
+  .dnasrmqxlu {
+    padding: 0.5rem;
+  }
+}
+
+/* Small Tablets */
+@media screen and (max-width: 768px) {
+  .parent {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 2fr));
+    gap: 8px;
+  }
+
+  .mjhnxodsgc {
+    padding: 8px;
+  }
+
+  .inqiowvkgz {
+    max-height: 140px;
+  }
+
+  .symbol,
+  .waifqtsovw,
+  .sixherwpuw {
+    font-size: 0.6rem;
+  }
+
+  .form-control,
+  .anleefcqnn,
+  .inrqwlsqvg {
+    font-size: 10px;
+    padding: 2px;
+  }
+
+  h6 {
+    font-size: 12px;
+  }
+
+  .rslpmygbcf {
+    width: 40%;
+    height: 50px;
+    font-size: 12px;
+  }
+
+  .website-logo-name {
+    display: none;
+  }
+
+  .dnasrmqxlu {
+    padding: 0.5rem;
+  }
+}
+
+/* Medium Screens (600–790px) */
+@media screen and (min-width: 600px) and (max-width: 790px) {
+  .search-products {
+    font-size: 5px;
+    width: 100%;
+    height: 200px;
+    overflow-x: auto;
+  }
+
+  .form-container {
+    font-size: 10px;
+    padding: 10px;
+    margin: 5px;
+  }
+
+  .gkaypbrfnm {
+    border: black solid 1px;
+    margin-right: 20px;
+  }
+
+  .tableFixHead {
+    width: 100%;
+    height: 220px;
+    overflow-x: auto;
+  }
+
+  .dnasrmqxlu {
+    overflow: scroll;
+    width: 100%;
+    padding: 1rem;
+  }
+}
+
+/* Large Screens */
+@media screen and (min-width: 1024px) {
+  .parent {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 2fr));
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .product-card,
+  .mjhnxodsgc {
+    padding: 10px;
+  }
+
+  .inqiowvkgz {
+    max-height: 200px;
+  }
+
+  .symbol,
+  .waifqtsovw,
+  .sixherwpuw {
+    font-size: 1.1rem;
+  }
+
+  h6 {
+    font-size: 12px;
+  }
+
+  .form-control,
+  .anleefcqnn,
+  .inrqwlsqvg {
+    font-size: 12px;
+    padding: 4px;
+  }
+
+  .rslpmygbcf {
+    width: 30%;
+    height: 60px;
+    font-size: 14px;
+  }
+
+  .dnasrmqxlu {
+    padding: 1rem 2rem;
+  }
+}
+
+/* Extra Large Screens */
+@media screen and (min-width: 1440px) {
+  .parent {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 2fr));
+    gap: 14px;
+    padding: 20px;
+  }
+
+  .product-card,
+  .mjhnxodsgc {
+    padding: 20px;
+  }
+
+  .inqiowvkgz {
+    max-height: 240px;
+  }
+
+  .symbol,
+  .waifqtsovw,
+  .sixherwpuw {
+    font-size: 1.2rem;
+  }
+
+  h6 {
+    font-size: 16px;
+  }
+}
+
       </style>
    </head>
    <body>
       @include('admin.common.pos-top-bar')
-      <div class="container-fluid vwfcqseium">
-         <div class="flexContainer">
+      <div class="container-fluid vwfcqseium main-div">
+         <div class="flexContainer first-container">
             @if($restaurant==1 || $enableHotelRoomMode==1)
             @if($enableSeatingTable == 1 || $enableOrderType == 1 || $enableHotelRoomMode==1)
-            <div class="flexDiv ohlvqtqflu">
+            <div class="flexDiv ohlvqtqflu first-div">
                <div class="dnasrmqxlu" style="overflow: scroll;height:86vh;">
                   @if(session('roleId') == 37)
                      @if($enableOrderType == 1)
@@ -175,7 +474,7 @@
 
          </div>
          @endif
-         
+         {{-- first div --}}
          <style>
              .nrwhjuikke{
                  width:32%;
@@ -190,30 +489,33 @@
                  width:100%;
              }
              .foqoajrkvg{
-                 width:36%;
+                 width:30%;
              }
              .iewyzzfhun .wuawubiaxe {
+               overflow-x:auto;
                width: 100%;
+               
                margin: 0px;
            }
+           
          </style>
          
          @endif
          <div class="flexDiv{{ ($restaurant == 1)?' nrwhjuikke':' plnfnztgev' }}">
-            <div class="dnasrmqxlu">
+            <div class="dnasrmqxlu second-div">
                <div class="vxurqawhsz">
                   <input type="text" class="form-control pnaekqlgpu" placeholder="Search Product" data-page="pos">
                </div>
-               <div class="flexContainer">
+               <div class="flexContainer search-products">
                   <div class="flexDiv {{ ($showManufacturers==0)?'wuawubiaxe':'iewyzzfhun' }}" 
-                       style="{{ ($showManufacturers==0)?'margin: 10px 0px 10px 0':'margin: 10px 10px 10px 0' }}">
-                       <button type="button" class="btn btn-primary mt-2 mb-2" 
+                       style="{{ ($showManufacturers==0)?'margin: 4px 0px 5px 0':'margin: 4px 4px 4px 0' }}">
+                       <button type="button" class="btn btn-primary mt-1 mb-1" 
                            data-id="" 
                            onclick="setCategory(this)">
                            {{$controller::message("All Categories")}}
                         </button>
                       @foreach($categories as $category)
-                          <button type="button" class="btn btn-primary mt-2 mb-2" 
+                          <button type="button" class="btn btn-primary mt-1 mb-1" 
                               data-id="{{$category['categoryId']}}" 
                               onclick="setCategory(this)">
                               {{$category['heading']}}
@@ -256,7 +558,7 @@
                               @endif
                               <div data-json="{{json_encode($product)}}" class="{{ $classProduct }}">
                                  <div class="eplxwhepxa symbol">{{$product['price']}}</div>
-                                 <div class="waifqtsovw">{{$controller::message("Qty")}}:{{$product['quantity']}}</div>
+                                 {{-- <div class="waifqtsovw">{{$controller::message("Qty")}}:{{$product['quantity']}}</div> --}}
                                  <div class="eplxwhepxa"></div>
                                  @if($showImage == 1)
                                  <div>
@@ -274,10 +576,10 @@
                                  @endif
                                  <div class="sixherwpuw oqmseozavb" style="{{ ($showImage != 1)?'margin-top:20px;':''  }}">{{$product['heading']}}</div>
                                  @if($showBarcode == 1)
-                                 <div class="sixherwpuw">{{$controller::message("Barcode")}} : <span>{{$product['barcode']}}</span></div>
+                                 <div class="sixherwpuw">{{$controller::message("")}} : <span>{{$product['barcode']}}</span></div>
                                  @endif
                                  @if($showModal == 1)
-                                 <div class="sixherwpuw">{{$controller::message("Model")}} : <span>{{$product['model']}}</span></div>
+                                 <div class="sixherwpuw">{{$controller::message("")}} : <span>{{$product['model']}}</span></div>
                                  @endif
                               </div>
                            @endif
@@ -287,6 +589,7 @@
                   @endif
                   @if(session('roleId') == 36)
                      <div class="parent">
+                     <div class="product-card">
                         @foreach($products as $product)
                            @php($BookedRoomshotel = FALSE)  
                            <?php
@@ -315,7 +618,7 @@
                               @endif
                               <div data-json="{{json_encode($product)}}" class="{{ $classProduct }}">
                                  <div class="eplxwhepxa symbol">{{$product['price']}}</div>
-                                 <div class="waifqtsovw">{{$controller::message("Qty")}}:{{$product['quantity']}}</div>
+                                 {{-- <div class="waifqtsovw">{{$controller::message("Qty")}}:{{$product['quantity']}}</div> --}}
                                  <div class="eplxwhepxa"></div>
                                  @if($showImage == 1)
                                  <div>
@@ -333,14 +636,15 @@
                                  @endif
                                  <div class="sixherwpuw oqmseozavb" style="{{ ($showImage != 1)?'margin-top:20px;':''  }}">{{$product['heading']}}</div>
                                  @if($showBarcode == 1)
-                                 <div class="sixherwpuw">{{$controller::message("Barcode")}} : <span>{{$product['barcode']}}</span></div>
+                                 <div class="sixherwpuw">{{$controller::message("")}} : <span>{{$product['barcode']}}</span></div>
                                  @endif
                                  @if($showModal == 1)
-                                 <div class="sixherwpuw">{{$controller::message("Model")}} : <span>{{$product['model']}}</span></div>
+                                 <div class="sixherwpuw">{{$controller::message("")}} : <span>{{$product['model']}}</span></div>
                                  @endif
                               </div>
                            @endif
                         @endforeach
+                        </div>
                      </div>
                   @endif
                   @if(session('roleId') != 36 || session('roleId') != 37)
@@ -373,12 +677,15 @@
                               @endif
                               <div data-json="{{json_encode($product)}}" class="{{ $classProduct }}">
                                  <div class="eplxwhepxa symbol">{{$product['price']}}</div>
-                                 <div class="waifqtsovw">{{$controller::message("Qty")}}:{{$product['quantity']}}</div>
+                                 {{-- <div class="waifqtsovw">{{$controller::message("Qty")}}:{{$product['quantity']}}</div> --}}
                                  <div class="eplxwhepxa"></div>
                                  @if($showImage == 1)
                                  <div>
                                     @if($enableLightBox == 0)
-                                    <img src="{{$controller::image($product['image'])}}" class="inqiowvkgz">
+                                    {{-- <img src="{{$controller::image($product['image'])}}" class="inqiowvkgz"> --}}
+                                    <div class="img-container" style="height:25px;">
+                                   
+                                    </div>
                                     @else
                                     <a class="example-image-link" href="{{ $controller::image($product['image']) }}" data-lightbox="{{$product['heading']}}" data-title="{{$product['heading']}}"><img class="inqiowvkgz" src="{{ $controller::image($product['image']) }}"></a>
                                     @if($product['relatedImage']!='' AND !empty(json_decode($product['relatedImage'],true)))
@@ -389,13 +696,13 @@
                                     @endif
                                  </div>
                                  @endif
-                                 <div class="sixherwpuw oqmseozavb" style="{{ ($showImage != 1)?'margin-top:20px;':''  }}">{{$product['heading']}}</div>
-                                 @if($showBarcode == 1)
-                                 <div class="sixherwpuw">{{$controller::message("Barcode")}} : <span>{{$product['barcode']}}</span></div>
+                                 <div class="sixherwpuw oqmseozavb padding " style="{{ ($showImage != 1)?'margin-top:20px;':''  }}">{{$product['heading']}}</div>
+                                 {{-- @if($showBarcode == 1)
+                                 <div class="sixherwpuw">{{$controller::message("")}} : <span>{{$product['barcode']}}</span></div>
                                  @endif
                                  @if($showModal == 1)
-                                 <div class="sixherwpuw">{{$controller::message("Model")}} : <span>{{$product['model']}}</span></div>
-                                 @endif
+                                 <div class="sixherwpuw">{{$controller::message("")}} : <span>{{$product['model']}}</span></div>
+                                 @endif --}}
                               </div>
                            @endif
                      @endforeach
@@ -406,7 +713,7 @@
          </div>
          <div class="flexDiv {{ ($restaurant == 1)?' foqoajrkvg':' kjowhskilo' }}">
             @if($showQuickAdd==1)
-            <div class="dnasrmqxlu" style="text-align: left;">
+            <div class="dnasrmqxlu third-div" style="text-align: left;">
                <label style="font-size:11px;color: var(--grey);margin-left: 4px;">{{$controller::message("Quick Add Customer")}}</label>
                <div class="flexContainer">
                   <div class="flexDiv">
@@ -421,11 +728,11 @@
                </div>
             </div>
             @endif
-            <div class="dnasrmqxlu" style="{{ ($showQuickAdd == 1)?'margin-top: 5px;':'margin-top: 0px;' }}position: relative;">
-               <div class="flexContainer">
-                  <div class="flexDiv">
+            <div class="dnasrmqxlu forth-div" style="{{ ($showQuickAdd == 1)?'margin-top: 5px;':'margin-top: 0px;' }}position: relative;">
+               <div class="flexContainer form-container">
+                  <div class="flexDiv form-flex">
                      <div class="qhzcqwbzba">
-                        <input type="text" class="form-control customerId cdqzxcqicd" placeholder="Search Customer" value="{{ (Session::get("posCustomer")!="")?Session::get("posCustomer")['name']:'Walk In Customer' }}">
+                        <input type="text" class="form-control customerId cdqzxcqicd" placeholder="Walk In Customer" value="{{ (Session::get("posCustomer")!="")?Session::get("posCustomer")['name']:'Walk In Customer' }}">
                         <div class="pjgkzsiken"></div>
                      </div>
                      @if($showSalesPerson == 1)
@@ -454,21 +761,21 @@
                   </div>
                </div>
                @if($enableCustomerReminder == 1)
-               <i class="fa-solid fa-stopwatch gvrddswwbp" style="text-align: right;cursor:pointer;margin-left: 20px;padding: 10px;background:var(--default);color:white;border-radius:3px;position:absolute;top:10px;right:10px;width:40px;text-align:center"></i>
+               <i class="fa-solid fa-stopwatch gvrddswwbp" style="text-align: right;cursor:pointer;margin-left: 10px;padding: 10px;background:var(--default);color:white;border-radius:3px;position:absolute;top:10px;right:10px;width:40px;text-align:center"></i>
                @php($editFromTop = "50px")
                @else
                @php($editFromTop = "10px")
                @endif
                <i class="fa-solid fa-edit mreuiavyie" style="text-align: right;cursor:pointer;margin-left: 20px;padding: 10px;background:var(--default);color:white;border-radius:3px;position:absolute;top:{{$editFromTop}};right:10px;width:40px;text-align:center"></i>
             </div>
-            <div class="dnasrmqxlu" style="margin-top: 5px;text-align: left;">
+            <div class="dnasrmqxlu" style="margin-top: 10px;text-align: center;">
                <div class="{{ ($showQuickAdd == 1)?'tableFixHead':'tableFixHeadWithoutQuickAdd' }}">
                   <table class="lllnnlgotb" id="lllnnlgotb">
                      <tr>
                         <td>{{$controller::message("Product")}}</td>
                         <td>{{$controller::message("Quantity")}}</td>
                         <td>{{$controller::message("Price")}}</td>
-                        <td align="right">{{$controller::message("Total")}}</td>
+                        <td>{{$controller::message("Total")}}</td>
                      </tr>
                      <tbody class="zotzqhlnxx">
                         @if(!empty(Session::get("posCart")))
@@ -484,10 +791,10 @@
                            <td>
                               <div class="jqkorjasuq" data-id="{{$cart['productId']}}">{{$cart['heading']}}</div>
                               @if ($showBarcode == 1)
-                              <div class="gmnmbdygnw">{{$controller::message("Barcode")}} : <span class="zuexkraafh">{{$cart['barcode']}}</span></div>
+                              <div class="gmnmbdygnw">{{$controller::message("")}} : <span class="zuexkraafh">{{$cart['barcode']}}</span></div>
                               @endif
                               @if ($showModal == 1)
-                              <div class="gmnmbdygnw">{{$controller::message("Model")}} : <span class="zuexkraafh">{{$cart['model']}}</span></div>
+                              <div class="gmnmbdygnw">{{$controller::message("")}} : <span class="zuexkraafh">{{$cart['model']}}</span></div>
                               @endif
                               @if ($enableTaxes == 1)
                               <div class="gmnmbdygnw">{{$controller::message("Tax")}} ({{$cart['taxType']}}) : <span class="zuexkraafh">{{$cart['taxHeading']}}<br>(<span class="asxigmquih">{{ ($cart['taxInclusiveValue']!=0)?$cart['taxInclusiveValue']:$cart['taxExclusiveValue'] }}</span>)</span></div>
@@ -525,14 +832,14 @@
          </div>
          <div class="flexDiv rslpmygbcf">
             @if($showStoreInfomation == 1)
-            <div class="dnasrmqxlu" style="text-align: left;">
+            <div class="dnasrmqxlu address-container" style="text-align: left;">
                <table class="jtoweyfypd">
                   <tr>
-                     <td width="40%">
+                     <td width="10%" class="website-logo-name">
                         <div class="voxsfftism">{{$settings['websiteName']}}</div>
                      </td>
                      <td style="vertical-align:top">
-                        <table style="width:100%;margin-left:10px;">
+                        <table style="width:10%;margin-left:5px;">
                            <tr>
                               <td colspan="2" class="usjuzdfdvl">{{$settings['websiteName']}}</td>
                            </tr>
