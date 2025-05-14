@@ -472,11 +472,8 @@ $(document).on('click', '.mjhnxodsgc', function() {
         }
         html += '</td>';
         html += '<td>';
-        if (json.productType == 'Hotel') {
-            html += '<input type="text" readonly style="width:50px;text-align: center;" data-id="' + json.productId + '" class="form-control qcjmjrbsop isNatural" value="1">';
-        } else {
-            html += '<input type="text" style="width:50px;text-align: center;" data-id="' + json.productId + '" class="form-control qcjmjrbsop isNatural" value="1">';
-        }
+        
+        html += '<input type="text" style="width:50px;text-align: center;" data-id="' + json.productId + '" class="form-control qcjmjrbsop isNatural" value="1">';
         html += '</td>';
         html += '<td><input type="text" style="width:50px;text-align: center;" data-id="' + json.productId + '" class="form-control vojotpessc percentage" value="0"></td>';
         if (json.changePriceDuringBilling == 1) {

@@ -808,13 +808,6 @@ h6 {
                               <span class="ucyspmmbme" style="text-decoration: underline;cursor: pointer;" data-id="{{$cart['productId']}}">{{$controller::message("Attach Details")}}</span>
                               @endif
                            </td>
-                           <td>
-                              @if ($cart['productType']=='Hotel')
-                              <td><input type="text" style="width:50px;text-align: center;" class="form-control vojotpessc percentage" data-id="{{$cart['productId']}}" value="{{$cart['discount']}}"></td>
-                              @else
-                              <input type="text" style="width:50px;text-align: center;" data-id="{{$cart['productId']}}" class="form-control qcjmjrbsop isNatural" value="{{$cart['quantity']}}">
-                              @endif
-                           </td>
                            <td class="symbol"><span class="kmaziybpmu {{ ($cart['changePriceDuringBilling']==1)?'xkvawimkrj':'' }}" data-id="{{$cart['productId']}}">{{$cart['price']}}</span></td>
                            <td align="right" class="symbol"><span class="akbvtlipgp">{{$cart['total']}}</span><i class="fa-solid fa-trash pull-right twqysfgott" style="color:#5bc273" data-id="{{$cart['productId']}}"></i></td>
                         </tr>
